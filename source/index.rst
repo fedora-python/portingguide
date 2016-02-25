@@ -1,0 +1,141 @@
+The Conservative Python 3 Porting Guide
+=======================================
+
+.. note::
+
+    This guide is in *outline* stage. The details are not fleshed out.
+
+This document will guide you through porting your software to Python 3.
+It is geared towards projects that are ported because support for Python 2
+is ending in a few years, and less for those where that are porting because
+Python 3 as a language allows writing expressive, maintainable and correct
+code more easily.
+It mainly targets projects with large, conservative codebases.
+
+We assume the *maintainers* of the codebase will only grudgingly
+accept porting-related changes, not necessarily that *you* specifically have
+an aversion to Python 3.
+If *you* are not convinced that Python 3 is a good choice, please skim
+Nick Coghlan's `Python 3 Q & A`_, which discusses the issues
+(both with Python 2 and 3) in depth.
+
+If you're interested in *updating* your code to take advantage of current
+best practices, rather than doing the minimum amount of work necessary to
+keep your software working on modern versions of Python, a better resource
+for you would be Lennart Regebro's book, `Supporting Python 3`_ (known as
+“Porting to Python 3” in earlier editions.
+
+This is an *opinionated* guide. It explains one tried way to do the porting,
+rather than listing all alternatives and leaving you to research them
+and choose.
+
+Still with us? Let's dive in!
+
+The porting process
+===================
+
+*   Make sure you have **tests**
+
+    First, your software needs to be tested.
+    It is practically impossible to change untested software.
+
+    Writing tests will provide long-term benefits to your sofwtare,
+    but if you're writing tests specifically for transitioning to Python 3,
+    here are the areas to focus on:
+
+    *
+
+      Text handling, especially with non-ASCII characters
+      (e.g. €, é, ñ, Ж, じ, 🐍), various text encodings,
+      and invalid text input.
+
+    * Module coverage (make sure all imports are valid)
+
+    * Failure modes
+
+*   Familiarize yourself with porting **tools**
+
+    Read up on the roles of ``six``, ``sixer``, ``modernize``,
+    ``py3c`` and ``pylint --py3k``.
+
+    While porting (and maybe even for some timeafterwards), you will
+    need to support both Python 2 and Python 3 with the same codebase.
+
+*   Define **data types** you are using
+
+    The biggest change in Python 3 is handling of the string type.
+    Python 3 draws a sharp distinction between *text* and *bytes*,
+    and requires that conversions between these are made explicitly,
+    with a well-defined encoding.
+
+    This means that in all places in the code, every ``str`` value
+    must be categorized as one of Python 3's “stringy” types:
+
+    *
+
+        *text* (known as ``unicode`` in Python 2) – human-readable text
+        represented as a sequence of Unicode
+        codepoints; usually without embedded NULL characters.
+
+    *
+
+        ``bytes`` – binary serialization format suitable for storing data on
+        on disk or sending it over the wire, as a sequence of
+        integers between 0 and 255.
+        Most data – images, sound, configuration, even text – can be
+        serialized (encoded) to bytes and deserialized (decoded) from
+        bytes, using an appropriate protocol such as PNG, VAW, JSON
+        or UTF-8.
+
+    Code that supports both Python 2 and 3 in the same codebase
+    will “conceptually” use another type:
+
+    *
+
+        ``str`` (the “native string”; text in py3, bytes in py2) – the type
+        Python uses internally for data like variable and attribute names,
+        and requires for ``__str__``/``__repr__`` output.
+
+    There are other changes to types, but those are generally minor.
+
+    Large, complex codebases may benefit from automatic optional type
+    checking provided by mypy_.
+    If your project uses verification tools like pylint_, consider adding
+    mypy to the mix.
+
+*   **Modernize** your code
+
+    Migrate away from deprecated features that have a Python3-compatible
+    equivalent backported to Python 2.
+    In this step, you will drop support for Python 2.5 and lower.
+
+*   **Port** your code
+
+    Add support for Python 3 while keeping compatibility with Python 2.
+
+*   **Clean up** (optional)
+
+    After you decide to drop support for Python 2, you can remove
+    compatibility workarounds, and start using Python 3 features.
+
+    This section is included for completeness, since it is not strictly
+    necessary to modify code that is already working under
+    both major Python versions.
+
+
+.. toctree::
+   :maxdepth: 2
+
+.. comment:
+
+    Indices and tables
+    ==================
+
+    * :ref:`genindex`
+    * :ref:`modindex`
+    * :ref:`search`
+
+.. _Python 3 Q & A: http://python-notes.curiousefficiency.org/en/latest/python3/questions_and_answers.html
+.. _Supporting Python 3: http://python3porting.com/
+.. _mypy: http://www.mypy-lang.org/
+.. _pylint: https://www.pylint.org/
