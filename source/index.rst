@@ -34,47 +34,30 @@ Still with us? Let's dive in!
 The porting process
 ===================
 
-*   Make sure you have **tests**
+*   :doc:`Make sure you have tests <tests>`
 
     First, your software needs to be tested.
     It is practically impossible to change untested software.
 
-    Writing tests will provide long-term benefits to your sofwtare,
-    but if you're writing tests specifically for transitioning to Python 3,
-    here are the areas to focus on:
-
-    *
-
-      Text handling, especially with non-ASCII characters
-      (e.g. €, é, ñ, Ж, じ, 🐍), various text encodings,
-      and invalid text input.
-
-    * Module coverage (make sure all imports are valid)
-
-    * Failure modes
-
-*   Familiarize yourself with porting **tools**
+*   :doc:`Familiarize yourself with porting tools <tools>`
 
     Read up on the roles of ``six``, ``sixer``, ``modernize``,
     ``py3c`` and ``pylint --py3k``.
 
-    While porting (and maybe even for some timeafterwards), you will
-    need to support both Python 2 and Python 3 with the same codebase.
-
 *   Define **data types** you are using
 
-    The biggest change in Python 3 is handling of the string type.
+    The biggest change in Python 3 is handling of the string types.
     Python 3 draws a sharp distinction between *text* and *bytes*,
     and requires that conversions between these are made explicitly,
     with a well-defined encoding.
 
-    This means that in all places in the code, every ``str`` value
-    must be categorized as one of Python 3's “stringy” types:
+    The consequence is that every value that was ``str`` in Python 2
+    must now be exactly one of two “stringy” types:
 
     *
 
-        *text* (known as ``unicode`` in Python 2) – human-readable text
-        represented as a sequence of Unicode
+        *text* (known as ``unicode`` in Python 2 and ``str`` in Python 3):
+        human-readable text represented as a sequence of Unicode
         codepoints; usually without embedded NULL characters.
 
     *
@@ -125,6 +108,9 @@ The porting process
 
 .. toctree::
    :maxdepth: 2
+
+   tests
+   tools
 
 .. comment:
 
