@@ -32,25 +32,83 @@ If you do not use ``six``, you will most likely end up reimplementing it
 or outright copying relevant pieces of it into your code.
 
 
-modernize
----------
+python-modernize
+----------------
 
-XXX
+Some steps of the porting process are quite mechanical, and can be automated.
+These are best handled by the ``python-modernize`` tool – a code-to-code
+translator that takes a Python 2 codebase and updates it to be compatible
+with both Python 2 and 3.
 
+The tool builds on top of ``2to3``, a tool that comes with Python. ``2to3``
+was once intended as the main porting tool. It turned out inadequate for that
+task, but several projects like ``python-modernize`` reuse its general
+infrastructure and useful pieces.
 
-sixer
------
+Assuming code is in version control, you'll want to run
+``python-modernize -wn .``: the ``-w`` flag causes the tool to write out
+changes, and ``-n`` suppresses creating backups of unmodified files.
+The tool also needs a directory (or individual files) to operate on; usually
+you'll use the current directory (``.``).
 
-XXX
+The tool operates by applying individual *fixers* – one for each type of
+change needed. You can select individual fixers to run.
+We've found that running a single fixer at a time results in changes that
+are easier to review and more likely to be accepted, so that is what this
+guide will recommend.
+The order of fixers matters sometimes. This guide will present them in order,
+but if you skip around, you will need to pay a bit more attention.
+
+Lastly, ``python-modernize`` is not perfect. Some changes it makes might
+not make sense at all times. It is necessary to know *what* and *why* is
+changed, and to review the result as closely as if a human wrote it.
+This guide will provide the necessary background for each fixer as we
+go along.
 
 
 py3c
 ----
 
-XXX
+Some projects involve extension modules written in C/C++, or embed Python in
+a C/C++-based application.
+An easy way to find these is to search your codebase for ``PyObject``.
+For these, we have two piecs of advice:
+
+*
+
+  Even though this is a conservative guide, we encourage you to try porting
+  C extensions away from the Cython C API. For wrappers to external libraries
+  we recommend `CFFI`_; for code that needs to be fast there's `Cython`_.
+
+  This is relatively disruptive, the result will very likely be more
+  maintainable and less buggy, as well as more portable to alternative Python
+  implementations.
+
+*
+
+  If you decide to keep your C extension, follow a dedicated porting guide
+  similar to this one, which also comes with a ``six``-like library for C
+  extensions: `py3c`_.
 
 
 pylint --py3k
 -------------
 
-XXX
+Pylint is a static code analyzer that can catch mistakes such as
+initialized variables, unused imports, and duplicated code.
+It also has a mode that flags code incompatible with Python 3.
+
+If you are already using Pylint, you can run the tool with the
+``--py3k`` option on any code that is already ported. This will prevent
+most regressions.
+
+You can also run ``pylint --py3k`` on unported code to get an idea of
+what will need to change, though ``python-modernize`` is usually a better
+choice here.
+
+
+
+
+.. _cffi: https://cffi.readthedocs.org/en/latest/
+.. _Cython: http://cython.org/
+.. _py3c: http://py3c.readthedocs.org/en/latest/
