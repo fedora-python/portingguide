@@ -23,7 +23,7 @@ If you're interested in *updating* your code to take advantage of current
 best practices, rather than doing the minimum amount of work necessary to
 keep your software working on modern versions of Python, a better resource
 for you would be Lennart Regebro's book, `Supporting Python 3`_ (known as
-“Porting to Python 3” in earlier editions.
+“Porting to Python 3” in earlier editions).
 
 This is an *opinionated* guide. It explains one tried way to do the porting,
 rather than listing all alternatives and leaving you to research them
