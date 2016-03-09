@@ -44,47 +44,18 @@ The porting process
     Read up on the roles of ``six``, ``sixer``, ``modernize``,
     ``py3c`` and ``pylint --py3k``.
 
-*   Define **data types** you are using
+*   :doc:`Define data types you are using <types>`
 
     The biggest change in Python 3 is handling of the string types.
     Python 3 draws a sharp distinction between *text* and *bytes*,
     and requires that conversions between these are made explicitly,
     with a well-defined encoding.
 
-    The consequence is that every value that was ``str`` in Python 2
-    must now be exactly one of two “stringy” types:
+    Before porting, it helps to decide, on a big-picture scale,
+    which data is textual and which is bytes.
 
-    *
-
-        *text* (known as ``unicode`` in Python 2 and ``str`` in Python 3):
-        human-readable text represented as a sequence of Unicode
-        codepoints; usually without embedded NULL characters.
-
-    *
-
-        ``bytes`` – binary serialization format suitable for storing data on
-        on disk or sending it over the wire, as a sequence of
-        integers between 0 and 255.
-        Most data – images, sound, configuration, even text – can be
-        serialized (encoded) to bytes and deserialized (decoded) from
-        bytes, using an appropriate protocol such as PNG, VAW, JSON
-        or UTF-8.
-
-    Code that supports both Python 2 and 3 in the same codebase
-    will “conceptually” use another type:
-
-    *
-
-        ``str`` (the “native string”; text in py3, bytes in py2) – the type
-        Python uses internally for data like variable and attribute names,
-        and requires for ``__str__``/``__repr__`` output.
-
-    There are other changes to types, but those are generally minor.
-
-    Large, complex codebases may benefit from automatic optional type
-    checking provided by mypy_.
-    If your project uses verification tools like pylint_, consider adding
-    mypy to the mix.
+    Also, static type-checking tools are available to help the porting
+    process.
 
 *   **Modernize** your code
 
@@ -111,6 +82,7 @@ The porting process
 
    tests
    tools
+   types
 
 .. comment:
 
@@ -123,5 +95,4 @@ The porting process
 
 .. _Python 3 Q & A: http://python-notes.curiousefficiency.org/en/latest/python3/questions_and_answers.html
 .. _Supporting Python 3: http://python3porting.com/
-.. _mypy: http://www.mypy-lang.org/
 .. _pylint: https://www.pylint.org/

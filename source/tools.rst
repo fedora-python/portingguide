@@ -6,6 +6,8 @@ and to check for common errors.
 Here is a survey of tools we reccommend.
 
 
+.. _six:
+
 six
 ---
 
