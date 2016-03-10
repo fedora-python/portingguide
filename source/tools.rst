@@ -6,6 +6,12 @@ and to check for common errors.
 Here is a survey of tools we reccommend.
 
 
+python -3
+---------
+
+XXX: Elaborate
+
+
 .. _six:
 
 six
@@ -33,6 +39,8 @@ one as hard as possible.
 If you do not use ``six``, you will most likely end up reimplementing it
 or outright copying relevant pieces of it into your code.
 
+
+.. _python-modernize:
 
 python-modernize
 ----------------

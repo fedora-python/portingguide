@@ -39,6 +39,10 @@ The porting process
     First, your software needs to be tested.
     It is practically impossible to change untested software.
 
+*   Make sure all dependencies are ported
+
+    XXX: elaborate
+
 *   :doc:`Familiarize yourself with porting tools <tools>`
 
     Read up on the roles of ``six``, ``sixer``, ``modernize``,
@@ -57,11 +61,20 @@ The porting process
     Also, static type-checking tools are available to help the porting
     process.
 
-*   **Modernize** your code
+*   *Drop support for Python 2.5 and lower*
+
+    Python 2.6 and 2.7 were released in lockstep with 3.0 and 3.1,
+    and contain several features that make supporting both versions
+    possible in the same codebase.
+    Trying port while maintaining compatibility with 2.5 is technically
+    possible, but inadvisable.
+
+    XXX: link to a page with support timeline?
+
+*   :doc:`Modernize your code <modernize>`
 
     Migrate away from deprecated features that have a Python3-compatible
-    equivalent backported to Python 2.
-    In this step, you will drop support for Python 2.5 and lower.
+    equivalent available in Python 2.
 
 *   **Port** your code
 
@@ -83,6 +96,7 @@ The porting process
    tests
    tools
    types
+   modernize
 
 .. comment:
 
