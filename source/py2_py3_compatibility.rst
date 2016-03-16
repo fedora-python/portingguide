@@ -57,9 +57,9 @@ Original Python 2 code::
 
     from nose.tools import assert_items_equal
 
-Adviced change from ``modernize`` tool::
+``assert_items_equal`` was replaced by ``assert_count_equal`` in Python 3 and ``modernize`` tool reflects it by the foloowing change::
 
-    from nose.tools import assert_count_equal as assert_items_equal``
+    from nose.tools import assert_count_equal
 
 and changes from ``assert_count_equal`` to ``assert_items_equal`` in the source code.
 
