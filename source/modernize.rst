@@ -30,7 +30,7 @@ We expect that your code is version-controlled, so these command lines disable
 Syntax of ``except``
 --------------------
 
-:ref:`Fixer <python-modernize>`: ``python-modernize -wnl lib2to3.fixes.fix_except.``
+:ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_except .``
 
 In Python 2, the syntax for catching exceptions is
 ``except ExceptionType:``, or ``except ExceptionType, target:`` when the
@@ -57,7 +57,7 @@ XXX
 ``apply()``
 -----------
 
-:ref:`Fixer <python-modernize>`: ``python-modernize -wnl lib2to3.fixes.fix_apply .``
+:ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_apply .``
 
 The built-in function :func:`apply <py2:apply>` was deprecated since
 Python 2.3, and it is removed in Python 3.
@@ -75,7 +75,7 @@ function, though the fixer will handle most such cases correctly.
 ``exec``
 --------
 
-:ref:`Fixer <python-modernize>`: ``python-modernize -wnl lib2to3.fixes.fix_exec .``
+:ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_exec .``
 
 Python 2's ``exec`` statement was replaced by a built-in function of the same
 name, to these replacements:
@@ -123,7 +123,7 @@ Such a function is not included in :ref:`six` because heavy usage of
 Integer Literals
 ----------------
 
-:ref:`Fixer <python-modernize>`: ``python-modernize -wnl lib2to3.fixes.fix_numliterals .``
+:ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_numliterals .``
 
 In Python 3, the ``L`` suffix for long integers is no longer accepted.
 For large numbers, it is not needed even in Python 2 (the type of
