@@ -26,6 +26,8 @@ fixer. For these, the corresponding command line is given.
 We expect that your code is version-controlled, so these command lines disable
 *python-modernize*'s automatic backup creation.
 
+We recommend running tests after each step, so you can spot problems early.
+
 
 Syntax of ``except``
 --------------------
