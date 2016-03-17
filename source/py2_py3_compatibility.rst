@@ -15,13 +15,13 @@ The both Python 2 and Python 3 codes of the same software will be required for s
 Libraries
 ---------
 
-``modernize`` and other tools are able to cover mostly changes related to reorganizations and renamings of libraries in Python 3 by using ``six`` module. Another way is to avoid `six`` module and take advices from ``modernize`` and other tools for new libraries, but they can't be used as such. Regebro's book, `Supporting Python 3 <http://python3porting.com/stdlib.html>`_, describes principles, how the libraries reorganizations can be solved in the source code. Some additional examples are here:
+``modernize`` and other tools are able to cover mostly changes related to reorganizations and renamings of libraries in Python 3 by using ``six`` module. Another way is to avoid `six`` module and try to import libraries from one location, and if ``ImportError`` occurs, then import from the other location. Regebro's book, `Supporting Python 3 <http://python3porting.com/stdlib.html>`_, describes principles, how the libraries reorganizations can be solved in the source code. Some additional examples are here:
 
 Original Python 2 code::
 
     from StringIO import StringIO
 
-Adviced change from ``modernize`` tool::
+Python 3 code::
 
     from io import StringIO
 
@@ -39,7 +39,7 @@ Original Python 2 code::
 
     from mock import Mock
 
-Adviced change from ``modernize`` tool::
+Python 3 code::
 
     from unittest.mock import Mock
 
@@ -57,7 +57,7 @@ Original Python 2 code::
 
     from nose.tools import assert_items_equal
 
-``assert_items_equal`` was replaced by ``assert_count_equal`` in Python 3 and ``modernize`` tool reflects it by the foloowing change::
+``assert_items_equal`` was replaced by ``assert_count_equal``, so the code should be in Python 3::
 
     from nose.tools import assert_count_equal
 
