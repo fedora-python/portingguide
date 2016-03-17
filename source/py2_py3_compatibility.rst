@@ -72,8 +72,46 @@ Final code compatible with Python 2 and Python 3 where the original ``assert_cou
         from nose.tools import assert_count_equal as assert_items_equal
 
 
-Strings
--------
+String representation
+---------------------
 
-TBD
+The different string representation is challenging for porting from Python 2 to Python 3. Several functions that return binary data, return ``str`` type in Python 2 and ``bytes`` in Python 3. An example is described in `Supporting Python 3 <http://http://python3porting.com/problems.html#string-representation>`_, other one is following.
 
+Original Python 2 code, where ``content`` is binary data representing text::
+
+    def parse_data(content):
+        for line in content.split('\n'):
+            ...
+        return
+
+As ``content`` is ``str`` type in Python 2 and ``bytes`` in Python 3, the code needs to be adjusted to be compatible in teh both Python versions::
+
+    def parse_data(content):
+        if isinstance(content, str):
+            output = content
+        else:
+            output = bytes.decode(content)
+        for line in output.split('\n'):
+            ...
+        return
+
+There can be also an opposite case ...
+
+Original code::
+
+    def atomic_write(filename, content):
+        file_handle = os.open(filename, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        os.write(file_handle, content)
+        os.close(file_handle)
+
+Adjusted code::
+
+    def atomic_write(filename, content):
+        file_handle = os.open(filename, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        if isinstance(content, str):
+    #       Encode Python 3 unicode:
+            os.write(file_handle, content.encode())
+        else:
+    #       Python 2:
+            os.write(file_handle, content)
+        os.close(file_handle)
