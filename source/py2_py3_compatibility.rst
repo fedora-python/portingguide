@@ -95,23 +95,25 @@ As ``content`` is ``str`` type in Python 2 and ``bytes`` in Python 3, the code n
             ...
         return
 
-There can be also an opposite case ...
+There can be also a case when the original Python 2 code handles transparently text data of ``str`` type with characters > 127. Python 3 works with such ``str`` type data in the different way because of internal Unicode coding, so the source code compatible with Python 2 and Python 3 has to distinguish between the both situations as illustrated in a following example:
 
 Original code::
 
+    import os
+    
     def atomic_write(filename, content):
-        file_handle = os.open(filename, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        file_handle = os.open(filename, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0600)
         os.write(file_handle, content)
         os.close(file_handle)
 
 Adjusted code::
 
+    import os, sys
+    
     def atomic_write(filename, content):
         file_handle = os.open(filename, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
-        if isinstance(content, str):
-    #       Encode Python 3 unicode:
+        if sys.version_info > (3,):
             os.write(file_handle, content.encode())
         else:
-    #       Python 2:
             os.write(file_handle, content)
         os.close(file_handle)
