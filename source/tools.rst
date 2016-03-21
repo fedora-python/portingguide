@@ -24,8 +24,9 @@ but even those that can drop Python 2 support as soon as the port is done
 will typically go through a period of adding Python 3 support,
 in which the software should continue to work on Python 2.
 
-Six makes it practical to write such version-straddling code
-by offering compatibility wrappers over the differences.
+Benjamin Peterson's ``six`` module makes it practical to write such
+version-straddling code by offering compatibility wrappers over
+the differences.
 
 For example, the Python 3 syntax for specifying metaclasses is not valid
 Python 2, ande the Python 2 way does nothing in Python 3,

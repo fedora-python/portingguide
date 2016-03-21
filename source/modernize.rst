@@ -56,6 +56,37 @@ Iterating exceptions
 XXX
 
 
+Division
+--------
+
+XXX: //
+
+
+Raising non-Exceptions
+----------------------
+
+XXX
+
+
+``sort(cmp=...)``
+-----------------
+
+XXX
+
+
+``python -3``
+-----------------
+
+XXX: Other changes
+* removed modules
+
+
+``buffer`` to ``memoryview``
+----------------------------
+
+XXX
+
+
 ``apply()``
 -----------
 
@@ -96,6 +127,8 @@ compatible with the new syntax.
 --------------
 
 *(No recommended fixer)*
+
+XXX: Give an execfile() function
 
 The ``execfile`` function was removed in Python 3, as it is only a combination of
 low-level calls. Instead of::
@@ -167,3 +200,41 @@ You can use the following Bash command for this::
     find . -name '*.py' ! -type d -exec bash -c 'T=$(mktemp); expand -i -t 8 "$0" > "$T" && mv "$T "$0"' {} \;
 
 XXX: check that
+
+
+``next()``
+----------
+
+XXX: next()
+
+
+New-Style Classes
+-----------------
+
+XXX (these aren't necessarily needed)
+
+
+Text/binary separation
+----------------------
+
+XXX
+
+
+Rich comparison methods
+-----------------------
+
+XXX
+XXX: cmp() is missing
+XXX: locale.strcoll -> locale.strxfrm
+
+
+Absolute imports
+----------------
+
+XXX
+
+
+Print function
+--------------
+
+XXX
