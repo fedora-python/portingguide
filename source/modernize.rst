@@ -179,27 +179,7 @@ similar to ``0x`` for hexadecimal numbers. In Python 3, ``0``-prefixed literals
 You will need to switch to the new syntax in both cases.
 
 
-Tabs and Spaces
----------------
-
-In Python 2, a tab character in indentation was considered equal to 8 spaces
-or less.
-In Python 3, a tab is only equal to another tab, so the following code is
-rejected (whitespace highlighted)::
-
-    def f(cond):
-    ····if cond:
-    →       do_something()
-    ····else:
-    →       do_something_else()
-
-If your code mixes tabs and spaces, the easiest way to fix this is
-converting all tabs to spaces.
-You can use the following Bash command for this::
-
-    find . -name '*.py' ! -type d -exec bash -c 'T=$(mktemp); expand -i -t 8 "$0" > "$T" && mv "$T "$0"' {} \;
-
-XXX: check that
+* (Tabs and Spaces) - done
 
 
 ``next()``
