@@ -30,16 +30,6 @@ for dropped packages.
 .. _portingdb: https://fedora.portingdb.xyz
 
 
-Get to Know your Tools
-......................
-
-The :doc:`tools` chapter describes a selection of tools that can automate or
-ease the porting process, and warn about potential problems or common
-regressions.
-We recommend that you get familiar with these tools before porting any
-substantial project.
-
-
 Run the Tests
 .............
 
@@ -49,6 +39,7 @@ to an updated language.
 If the project has automatic tests, run them under Python 2 to make sure
 they pass.
 If not, write them – or you'll need to resort to testing manually.
+
 
 Drop Python 2.5 and Lower
 .........................
@@ -64,6 +55,22 @@ Bring this up with the software's maintainers.
 If compatibility with Python 2.5 is *really* necessary, we recommend that
 you fork the codebase, i.e. work on a copy and regularly merge in any
 new development.
+
+
+Use The Tools
+.............
+
+The :doc:`tools` chapter describes a selection of tools that can automate or
+ease the porting process, and warn about potential problems or common
+regressions.
+We recommend that you get familiar with these tools before porting any
+substantial project.
+
+In particular, this guide includes „fixers” where appropriate.
+These can automate a lot, if not most, of the porting work.
+But please read the
+:ref:`notes for the python-modernize tool <python-modernize>` before running
+them to avoid any surprises.
 
 
 Port Small Pieces First

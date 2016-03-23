@@ -29,62 +29,7 @@ We expect that your code is version-controlled, so these command lines disable
 We recommend running tests after each step, so you can spot problems early.
 
 
-Syntax of ``except``
---------------------
-
-:ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_except .``
-
-In Python 2, the syntax for catching exceptions is
-``except ExceptionType:``, or ``except ExceptionType, target:`` when the
-exception object is desired.
-``ExceptionType`` can be a tuple, as in, for example,
-``except (TypeError, ValueError):``.
-
-This result in hard-to-spot bugs: the command ``except TypeError, ValueError:``
-(note lack of parentheses) will only handle ``TypeError``. It will also assign
-the exception object to the name ``ValueError``, shadowing the built-in.
-
-To fix this, Python 2.6 introduced an alternate syntax:
-``except ExceptionType as target:``.
-In Python 3, the old syntax is no longer allowed.
-
-You will need to switch to the new syntax.
-
-Iterating exceptions
---------------------
-
-XXX
-
-
-Division
---------
-
-XXX: //
-
-
-Raising non-Exceptions
-----------------------
-
-XXX
-
-
-``sort(cmp=...)``
------------------
-
-XXX
-
-
-``python -3``
------------------
-
-XXX: Other changes
-* removed modules
-
-
-``buffer`` to ``memoryview``
-----------------------------
-
-XXX
+* Syntax of ``except`` - done
 
 
 ``apply()``
@@ -182,22 +127,10 @@ You will need to switch to the new syntax in both cases.
 * (Tabs and Spaces) - done
 
 
-``next()``
-----------
-
-XXX: next()
-
-
 New-Style Classes
 -----------------
 
 XXX (these aren't necessarily needed)
-
-
-Text/binary separation
-----------------------
-
-XXX
 
 
 Rich comparison methods
@@ -207,14 +140,3 @@ XXX
 XXX: cmp() is missing
 XXX: locale.strcoll -> locale.strxfrm
 
-
-Absolute imports
-----------------
-
-XXX
-
-
-Print function
---------------
-
-XXX

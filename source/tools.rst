@@ -51,28 +51,34 @@ These are best handled by the ``python-modernize`` tool – a code-to-code
 translator that takes a Python 2 codebase and updates it to be compatible
 with both Python 2 and 3.
 
-The tool builds on top of ``2to3``, a tool that comes with Python. ``2to3``
+The tool builds on top of ``2to3``, a library that comes with Python. ``2to3``
 was once intended as the main porting tool. It turned out inadequate for that
-task, but several projects like ``python-modernize`` reuse its general
-infrastructure and useful pieces.
+task, but ``python-modernize`` (among others) successfully reuses its general
+infrastructure.
 
-Assuming code is in version control, you'll want to run
-``python-modernize -wn .``: the ``-w`` flag causes the tool to write out
-changes, and ``-n`` suppresses creating backups of unmodified files.
-The tool also needs a directory (or individual files) to operate on; usually
-you'll use the current directory (``.``).
+Assuming code is in version control, you'll generally want to run
+``python-modernize`` with the ``-wn`` flags: ``-w`` flag causes the tool to
+actually change the affected files, and ``-n`` suppresses creating backups.
 
 The tool operates by applying individual *fixers* – one for each type of
-change needed. You can select individual fixers to run.
+change needed. You can select individual fixers to run using the ``-f`` option.
 We've found that running a single fixer at a time results in changes that
 are easier to review and more likely to be accepted, so that is what this
 guide will recommend.
 The order of fixers matters sometimes. This guide will present them in order,
 but if you skip around, you will need to pay a bit more attention.
 
-Lastly, ``python-modernize`` is not perfect. Some changes it makes might
-not make sense at all times. It is necessary to know *what* and *why* is
-changed, and to review the result as closely as if a human wrote it.
+The tool always needs a directory (or individual files) to operate on; usually
+you'll use the current directory (``.``).
+
+Combining all that, the recommended invocation is::
+
+    python-modernize -wnf <fixer-name> .
+
+While ``python-modernize`` is useful, it is not perfect.
+Some changes it makes might not make sense at all times, and in many cases.
+It is necessary to know *what* and *why* is changed, and to review the result
+as closely as if a human wrote it.
 This guide will provide the necessary background for each fixer as we
 go along.
 
