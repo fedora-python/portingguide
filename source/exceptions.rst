@@ -27,7 +27,8 @@ To fix this, Python 2.6 introduced an alternate syntax:
 In Python 3, the old syntax is no longer allowed.
 
 You will need to switch to the new syntax.
-The recommended fixer works quite reliably.
+The recommended fixer works quite reliably, and it also fixes the
+:ref:`iter_exc` problem described below.
 
 
 .. _raise-syntax:
@@ -35,12 +36,127 @@ The recommended fixer works quite reliably.
 The new ``raise`` syntax
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_raise -f libmodernize.fixes.fix_raise_six``
+* Prevalence: Common
+
+Python 2's ``raise`` statement was designed at a time when exceptions weren't
+classes, and an exception's *type*, *value*, and *traceback* components
+were three separate objects::
+
+    raise ValueError, 'invalid input'
+    raise ValueError, 'invalid input', some_traceback
+
+In Python 3, one single object includes all information about an exception::
+
+    raise ValueError('invalid input')
+
+    e = ValueError('invalid input')
+    e.__traceback__ = some_traceback
+    raise e
+
+Python 2.6 allows the first variant. For the second, reraising an exception,
+the :ref:`six` library includes a convenience wrapper that works in both
+versions::
+
+    import six
+    six.reraise(ValueError, 'invalid input',  some_traceback)
+
+The recommended fixers will do these conversions automatically and quite
+reliably, but do verify the resulting changes.
+
+
+.. _exc_scope:
+.. index::
+    single: NameError (from caught exception)
+
+Caught Exception “Scope”
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* :ref:`Fixer <python-modernize>`: *None*
+* Prevalence: Rare
+
+As :ref:`discussed previously <raise-syntax>`, in Python 3, all information
+about an exception, including the traceback, is contained in the exception
+object.
+Since, the traceback holds references to the values of all local variables,
+storing an exception in a local variable usually forms a reference cycle,
+keeping all local variables allocated until the next garbage collection pass.
+
+To prevent this issue, to quote from :py3:ref:`Python's documentation <try>`:
+
+    When an exception has been assigned using as target, it is cleared at
+    the end of the except clause. This is as if ::
+
+        except E as N:
+            foo
+
+    was translated to ::
+
+        except E as N:
+            try:
+                foo
+            finally:
+                del N
+
+    This means the exception must be assigned to a different name to be
+    able to refer to it after the except clause.
+
+Unfortunately, :ref:`python-modernize` does not provide a fixer for this
+change.
+This issue results in a loud ``NameError`` when tests are run.
+
+
+.. _iter_exc:
+
 Iterating Exceptions
 ~~~~~~~~~~~~~~~~~~~~
+
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_except``
+* Prevalence: Rare
+
+In Python 2, exceptions were *iterable*. so it was possible to “unpack” the
+arguments of an exception as part of the ``except`` statement::
+
+    except RuntimeError as (num, message):
+
+In Python 3, this is no longer true.
+
+    except RuntimeError as e:
+        num, message = e.args
+
+The reccommended fixer catches the easy cases of unpacking in ``except``
+statements.
+If your code iterates through exceptions elsewhere, you need to manually
+change it to iterate over ``args`` instead.
+
+Additionally, the fixer does not do a good job on single-line suites such as::
+
+    except RuntimeError as (num, message): pass
+
+Inspect the output and break these into multiple lines manually.
+
+.. todo:: Report bug to python-modernize
+
 
 Raising Non-Exceptions
 ~~~~~~~~~~~~~~~~~~~~~~
 
+* Fixer: None
+* Prevalence: Rare
+
+In Python 3, an object used with ``raise`` must be an instance of
+``BaseException``, while Python 2 also allowed old-style classes.
+
+XXX
+
+.. todo:: Link "old-style classes" to their section
+
+
 The Removed ``StandardError``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Removed ``sys.exc_type``, ``sys.exc_value``, ``sys.exc_traceback``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

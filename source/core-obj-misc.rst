@@ -12,5 +12,8 @@ Function Attributes
 ``__getslice__``, ``__setslice__``, ``__delslice__``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+``__bool__``
+~~~~~~~~~~~~
+
 Unbound Methods
 ~~~~~~~~~~~~~~~

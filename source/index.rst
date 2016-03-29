@@ -123,14 +123,12 @@ The porting process
     both major Python versions.
 
 
-.. comment:
+Indices and tables
+==================
 
-    Indices and tables
-    ==================
-
-    * :ref:`genindex`
-    * :ref:`modindex`
-    * :ref:`search`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 .. _Python 3 Q & A: http://python-notes.curiousefficiency.org/en/latest/python3/questions_and_answers.html
 .. _foreword of Lennart Regebro's book: http://python3porting.com/foreword.html
