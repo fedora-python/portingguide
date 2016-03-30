@@ -145,18 +145,46 @@ Raising Non-Exceptions
 * Prevalence: Rare
 
 In Python 3, an object used with ``raise`` must be an instance of
-``BaseException``, while Python 2 also allowed old-style classes.
-
-XXX
+:py:class:`BaseException`, while Python 2 also allowed old-style classes.
 
 .. todo:: Link "old-style classes" to their section
+
+Raising non-Exception classes was obsolete as early as in Python 2.0,
+but code that does this can still be found.
+
+Each case needs to be handled manually.
+If there is a dedicated class for the exception,
+make it inherit from :py:class:`Exception`.
+Otherwise, switch to using a dedicated Exception class.
 
 
 The Removed ``StandardError``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_standarderror`` (but see caveat below)
+* Prevalence: Rare
+
+The :class:`py2:StandardError` class is removed in Python 3.
+It was the base class for built-in exceptions, and it proved to be an
+unnecessary link in almost any exception's inheritance chain.
+
+The reccommended fixer will replace all uses of ``StandardError`` with
+``Exception``.
+Review the result to check if this is correct: for example, code might rely
+on the name of an exception class, or on exceptions not derived from
+``StandardError``.
 
 
 Removed ``sys.exc_type``, ``sys.exc_value``, ``sys.exc_traceback``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Fixer: None
+* Prevalence: Rare
+
+These exception-related attributes of the ``sys`` module are not thread-safe,
+and were deprecated since Python 1.5.
+They they have been dropped for Python 3.
+
+The information can be retrieved with a call to :py:func:`~sys.exc_info()`::
+
+    exc_type, exc_value, exc_traceback = sys.exc_info()
