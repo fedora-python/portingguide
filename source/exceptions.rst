@@ -1,7 +1,21 @@
 Exceptions
 ----------
 
-XXX
+Very early Python versions used simple strings to signalize errors.
+Later, Python allowed raising arbitrary classes, and added specialized
+exception classes to the standard library.
+For backwards compatibility reasons, some deprecated practices were still
+allowed in Python 2.
+This presents confusion to learners of the language, and prevents some
+performance optimizations.
+
+Python 3 consolidates the exception model.
+Exceptions are now instances of dedicated classes.
+They contain all information about the error: the type, value and traceback.
+
+This chapter mentions all exception-related changes needed to start
+supportingPython 3.
+
 
 .. _except-syntax:
 
@@ -146,6 +160,8 @@ Raising Non-Exceptions
 
 In Python 3, an object used with ``raise`` must be an instance of
 :py:class:`BaseException`, while Python 2 also allowed old-style classes.
+Similarly, Python 3 bans catching non-exception classes in the ``except``
+statement.
 
 .. todo:: Link "old-style classes" to their section
 
