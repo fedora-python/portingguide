@@ -18,7 +18,7 @@ up their interfaces.
 For any libraries that are ported already, look in their documentation for
 any notes specific to Python 3, and if you find any, note them for later.
 
-If you depend on a library that is not ported, inquire its authors about
+If you depend on a library that is not ported, inquire of its authors about
 the porting status.
 If the library is open-source, consider helping to port it – the experience
 will likely help in your own project.
@@ -33,8 +33,8 @@ for dropped packages.
 Run the Tests
 .............
 
-It's not practical to make any changes to untested code, let alone porting
-to an updated language.
+It's impractical to make any changes to an untested code, let alone porting
+the entire codebase to a new version of the programming language.
 
 If the project has automatic tests, run them under Python 2 to make sure
 they pass.
@@ -88,7 +88,7 @@ you do only one type of change per commit/patch.
 For example, one patch to change the :ref:`except syntax <except-syntax>`,
 then another for the :ref:`raise syntax <raise-syntax>`.
 Do not submit a single patch saying “Port to Python 3”.
-Doing this makes the change much easier to review.
+Following this workflow makes the changes much easier to review.
 
 The descriptions of individual items in this guide are written so that you
 can use them in commit messages with minimal changes to explain why each change
@@ -102,10 +102,10 @@ The next chapter, :doc:`tools`, explains how to automate porting and checking.
 
 Each of the subsequent chapters explains one area where Python 3 differs from
 Python 2, and how to adapt the code.
-They are arranged roughly in the typical order they are tackled in a typical
-project.
+The chapters are arranged roughly according to the order in which they are
+usually tacked in a typical project.
 
 We recommend that you skim the introduction of each of the chapters,
-so that you know what you're up against pefore you start.
+so that you know what you're up against before you start.
 
 Happy porting!
