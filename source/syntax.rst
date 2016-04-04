@@ -129,4 +129,6 @@ Other Syntax Changes
 For convenience and completeness, this section lists syntax changes covered
 in other chapters:
 
-XXX: (put list here)
+* :ref:`import-star`
+
+.. todo:: complete list

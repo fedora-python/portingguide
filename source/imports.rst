@@ -61,6 +61,8 @@ This may be too much churn for your project; in most cases it is enough to
 verify that your imports are not ambiguous.
 
 
+.. _import-star:
+
 ``import *`` in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
