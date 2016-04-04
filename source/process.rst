@@ -33,7 +33,7 @@ for dropped packages.
 Run the Tests
 .............
 
-It's impractical to make any changes to an untested code, let alone porting
+It's impractical to make any changes to untested code, let alone porting
 the entire codebase to a new version of the programming language.
 
 If the project has automatic tests, run them under Python 2 to make sure
@@ -103,7 +103,7 @@ The next chapter, :doc:`tools`, explains how to automate porting and checking.
 Each of the subsequent chapters explains one area where Python 3 differs from
 Python 2, and how to adapt the code.
 The chapters are arranged roughly according to the order in which they are
-usually tacked in a typical project.
+tacked in a typical project.
 
 We recommend that you skim the introduction of each of the chapters,
 so that you know what you're up against before you start.

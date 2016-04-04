@@ -6,7 +6,7 @@ The Conservative Python 3 Porting Guide
     This guide is in *outline* stage. The details are not fleshed out.
 
 This document will guide you through porting your software to Python 3.
-It is geared towards projects that are being ported because the support for
+It is geared towards projects that are being ported because support for
 Python 2 is ending in a few years, and less for those that are porting because
 Python 3 as a language allows writing expressive, maintainable and correct
 code more easily.
