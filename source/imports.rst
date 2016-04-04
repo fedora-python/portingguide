@@ -64,6 +64,9 @@ verify that your imports are not ambiguous.
 ``import *`` in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Fixer: None
+* Prevalence: Rare
+
 In Python 3, “star imports” are only allowed on the module level, not in
 classes or functions.
 For example, this won't work::
@@ -78,12 +81,29 @@ in advance.
 Python 2 reverted to using unoptimized bytecode for such functions;
 Python 3 includes only the optimized case.
 
-This code raised a :py:func:`SyntaxWarning` already in Python 2.6.
+This code raised a :py:class:`SyntaxWarning` already in Python 2.6.
+In Python 3, this becomes a :py:class:`SyntaxError`, so module-level
+test coverage is enough to spot the error.
 
-XXX
 
 Import Cycles
 ~~~~~~~~~~~~~
+
+* Fixer: None
+* Prevalence: Rare
+
+Python 3 introduced a reworked importmentation of ``import`` in the form
+of the :py:mod:`importlib` module.
+The new machinery is backwards-compatible in practice, except that some
+import cycles, especially those involving submodules, now raise
+:py:class:`ImportError`.
+
+If you encounter such errors, check for import cycles (these should be visible
+from the traceback as one module imported multiple times).
+In most cases you can break circular imports by refactoring common code into
+a separate module.
+
+.. todo:: Elaborate
 
 
 .. rubric:: Footnotes
