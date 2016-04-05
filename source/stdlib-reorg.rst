@@ -53,13 +53,54 @@ documentation of the specific module for recommended replacements.
 .. todo:: copy list here, to fill the index
 
 
-The ``urllib`` module
-~~~~~~~~~~~~~~~~~~~~~
+.. index:: urllib, urllib2, urlparse
 
-.. todo:: urllib
+The ``urllib`` modules
+~~~~~~~~~~~~~~~~~~~~~~
+
+* Fixer: None
+* Prevalence: Common
+
+The :mod:`py2:urllib`, :mod:`py2:urllib2` and :mod:`py2:urlparse` modules were
+reorganized more heavily, with individual functions and classes reistributed to
+submodules of Python 3's :mod:`urllib`: :mod:`urllib.parse`, :mod:`urllib.error`,
+:mod:`urllib.request`, and :mod:`urllib.response`.
+
+These functions are included in ``six.moves``, and the
+`six documentation <https://pythonhosted.org/six/#module-six.moves.urllib.parse>`_
+has details on what moved where.
+Use this information to adjust your code.
+
+The ``fix_imports_six`` does not handle all urllib moves.
+
+.. todo:: copy list here, to fill the index
 
 
 The ``string`` module
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. todo:: string
+* Fixer: None
+* Prevalence: Rare
+
+In Python 2, the ``string`` module included functions that mirrored ``str``
+methods, such as :func:`py2:string.lower` and :func:`py2:string.join`
+that mirror :meth:`str.lower` and :meth:`str.join`.
+These have been deprecated since Python 2.4, and they are removed in Python 3.
+
+Convert all uses of these functions to string methods.
+
+For example, this code::
+
+    import string
+    products = ['widget', 'thingy', 'whatchamacallit']
+    print string.join(products, sep=', ')
+
+should be replaced with::
+
+    products = ['widget', 'thingy', 'whatchamacallit']
+    print(', '.join(products))
+
+The :ref:`python-modenize` tool doesn't provide an automated fixer for these
+changes.
+
+.. todo:: copy list here, to fill the index
