@@ -29,9 +29,7 @@ If your code mixes tabs and spaces, the easiest way to fix this is
 converting all tabs to spaces.
 You can use the following Bash command for this::
 
-    find . -name '*.py' ! -type d -exec bash -c 'T=$(mktemp); expand -i -t 8 "$0" > "$T" && mv "$T "$0"' {} \;
-
-XXX: Check that the command actually works...
+    find . -name '*.py' -type f -exec bash -c 'T=$(mktemp); expand -i -t 8 "$0" > "$T" && mv "$T" "$0"' {} \;
 
 
 Tuple Unpacking in Parameter Lists
