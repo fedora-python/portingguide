@@ -83,6 +83,10 @@ Port Small Pieces First
 If the codebase contains a small, self-contained module, port it first
 before moving on to larger pieces or the entire code.
 
+If you want to learn more practical way, before you port your own software,
+you can help developers with porting some open source software or your
+favorite library or application.
+
 
 One Change per Commit
 .....................
