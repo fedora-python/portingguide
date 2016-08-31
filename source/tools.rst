@@ -89,7 +89,7 @@ py3c
 Some projects involve extension modules written in C/C++, or embed Python in
 a C/C++-based application.
 An easy way to find these is to search your codebase for ``PyObject``.
-For these, we have two piecs of advice:
+For these, we have two pieces of advice:
 
 *
 
