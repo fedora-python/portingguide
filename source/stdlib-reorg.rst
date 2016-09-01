@@ -45,7 +45,7 @@ specific to now-unsupported operating systems (e.g. :mod:`py2:fl`),
 or known to be broken (e.g. :mod:`py2:Bastion`).
 
 Lennart Regebro compiled a list of these modules in the book
-„Supporting Python 3”, which is `available online <http://python3porting.com/stdlib.html#removed-modules>`_.
+“Supporting Python 3”, which is `available online <http://python3porting.com/stdlib.html#removed-modules>`_.
 
 If your code uses any of the removed modules, check the *Python 2*
 documentation of the specific module for recommended replacements.

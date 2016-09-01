@@ -70,7 +70,7 @@ regressions.
 We recommend that you get familiar with these tools before porting any
 substantial project.
 
-In particular, this guide includes „fixers” where appropriate.
+In particular, this guide includes “fixers” where appropriate.
 These can automate a lot, if not most, of the porting work.
 But please read the
 :ref:`notes for the python-modernize tool <python-modernize>` before running
