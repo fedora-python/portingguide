@@ -135,6 +135,8 @@ arguments of an exception as part of the ``except`` statement::
 
 In Python 3, this is no longer true.
 
+.. code-block:: python
+
     except RuntimeError as e:
         num, message = e.args
 
