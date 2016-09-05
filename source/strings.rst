@@ -61,12 +61,14 @@ For other data, you can use the native string in these circumstances:
 
     * You are working with textual data
     * Under Python 2, each “native string” value has a well-defined encoding
-      (such as ``UTF-8`` or :ref:`py:locale.getpreferredencoding`) 
+      (such as ``UTF-8`` or ``locale.getpreferredencoding``)
     * You do not mix native strings with either bytes or text – always
       encode/decode dilligently when converting to these types.
 
-Adding a third incompatible type makes porting process harder, but by using
-native strings, 
+Native string affects the semantics under Python 2 as little as possible,
+while not requiring the resulting Python 3 API to feel bad. But, adding
+a third incompatible type makes porting process harder, so it is suitable
+mostly for conservative projects.
 
 
 Conversion between text and bytes
@@ -104,7 +106,7 @@ Conversion to text or bytes
 ---------------------------
 
 There is no built-in function that converts to text in both Python versions.
-The :ref`six` library provides ``six.text_type``, which is fine if it appears
+The :ref:`six` library provides ``six.text_type``, which is fine if it appears
 once or twice in uncomplicated code.
 For better readability, we recommend using ``unicode``,
 which is unambiguous and clear, but it needs to be introduced with the

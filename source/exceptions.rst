@@ -135,6 +135,8 @@ arguments of an exception as part of the ``except`` statement::
 
 In Python 3, this is no longer true.
 
+.. code-block:: python
+
     except RuntimeError as e:
         num, message = e.args
 
@@ -199,7 +201,7 @@ Removed ``sys.exc_type``, ``sys.exc_value``, ``sys.exc_traceback``
 
 These exception-related attributes of the ``sys`` module are not thread-safe,
 and were deprecated since Python 1.5.
-They they have been dropped for Python 3.
+They have been dropped for Python 3.
 
 The information can be retrieved with a call to :py:func:`~sys.exc_info()`::
 

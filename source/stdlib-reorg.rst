@@ -23,11 +23,10 @@ you should import ``six.moves``::
 
     from six.moves.configparser import ConfigParser
 
-A list of all renamed modules is included in `six documentation`_.
+A list of all renamed modules is included in
+`six documentation <https://pythonhosted.org/six/#module-six.moves>`_.
 
 The recommended fixer will automatically change imports to use ``six.moves``.
-
-.. _six documentation: https://pythonhosted.org/six/#module-six.moves
 
 .. todo:: copy list here, to fill the index
 
