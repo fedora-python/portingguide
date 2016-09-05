@@ -1,7 +1,7 @@
 Numbers
 -------
 
-There have been two major changes in how Python 3 handles strings:
+There have been two major changes in how Python 3 handles numbers:
 true division replaces truncating division, and the ``long``
 type was merged into ``int``.
 
