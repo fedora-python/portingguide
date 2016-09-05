@@ -106,7 +106,7 @@ Conversion to text or bytes
 ---------------------------
 
 There is no built-in function that converts to text in both Python versions.
-The :ref`six` library provides ``six.text_type``, which is fine if it appears
+The :ref:`six` library provides ``six.text_type``, which is fine if it appears
 once or twice in uncomplicated code.
 For better readability, we recommend using ``unicode``,
 which is unambiguous and clear, but it needs to be introduced with the
