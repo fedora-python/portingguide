@@ -61,12 +61,12 @@ For other data, you can use the native string in these circumstances:
 
     * You are working with textual data
     * Under Python 2, each “native string” value has a well-defined encoding
-      (such as ``UTF-8`` or :ref:`py:locale.getpreferredencoding`) 
+      (such as ``UTF-8`` or ``locale.getpreferredencoding``)
     * You do not mix native strings with either bytes or text – always
       encode/decode dilligently when converting to these types.
 
 Adding a third incompatible type makes porting process harder, but by using
-native strings, 
+native strings,
 
 
 Conversion between text and bytes
