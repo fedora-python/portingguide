@@ -65,8 +65,10 @@ For other data, you can use the native string in these circumstances:
     * You do not mix native strings with either bytes or text – always
       encode/decode dilligently when converting to these types.
 
-Adding a third incompatible type makes porting process harder, but by using
-native strings,
+Native strings affect the semantics under Python 2 as little as possible,
+while not requiring the resulting Python 3 API to feel bad. But, adding
+a third incompatible type makes porting process harder, so it is suitable
+mostly for conservative projects.
 
 
 Conversion between text and bytes
