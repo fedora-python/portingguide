@@ -27,10 +27,9 @@ A list of all renamed modules is included in `six documentation`_.
 
 The recommended fixer will automatically change imports to use ``six.moves``.
 
-.. _six documentation: https://pythonhosted.org/six/#module-six.moves
-
 .. todo:: copy list here, to fill the index
 
+.. _six documentation: https://pythonhosted.org/six/#module-six.moves
 
 Removed modules
 ~~~~~~~~~~~~~~~
@@ -66,8 +65,7 @@ reorganized more heavily, with individual functions and classes reistributed to
 submodules of Python 3's :mod:`urllib`: :mod:`urllib.parse`, :mod:`urllib.error`,
 :mod:`urllib.request`, and :mod:`urllib.response`.
 
-These functions are included in ``six.moves``, and the
-`six documentation <https://pythonhosted.org/six/#module-six.moves.urllib.parse>`_
+These functions are included in ``six.moves``, and the `six documentation`_
 has details on what moved where.
 Use this information to adjust your code.
 
