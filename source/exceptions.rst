@@ -133,7 +133,7 @@ arguments of an exception as part of the ``except`` statement::
 
     except RuntimeError as (num, message):
 
-In Python 3, this is no longer true.
+In Python 3, this is no longer true::
 
     except RuntimeError as e:
         num, message = e.args
