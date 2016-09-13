@@ -44,74 +44,63 @@ for such objects.
 Randomized Key Order
 ~~~~~~~~~~~~~~~~~~~~
 
-Python has never guaranteed order of keys in a dict, and applications
-shouldn't rely on it. Historically, order of elements in dict has not changed
-very often and always remained consistent between successive executions of Python.
+* Fixer: None
+* Prevalence: Uncommon
+
+The Python language specification has never guaranteed order of keys in
+a dictionary, and mentioned that applications shouldn't rely on it.
+In practice, however, the order of elements in a dict was usually remained
+consistent between successive executions of Python 2.
 
 Suppose we have a simple script with the following content::
 
-    $ cat order.py 
-    from __future__ import print_function
-
+    $ cat order.py
     dictionary = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
-
-    for key in dictionary:
-        print(key, dictionary[key])
+    print(list(dictionary.items()))
 
 With ``python2``, the result contains elements of dict in the same order
-for every execution. This order is not same as original one, but it's stable::
+for every execution::
 
     $ python2 order.py
-    a 1
-    c 3
-    b 2
-    e 5
-    d 4
+    [('a', 1), ('c', 3), ('b', 2), ('e', 5), ('d', 4)]
 
     $ python2 order.py 
-    a 1
-    c 3
-    b 2
-    e 5
-    d 4
+    [('a', 1), ('c', 3), ('b', 2), ('e', 5), ('d', 4)]
 
     $ python2 order.py 
-    a 1
-    c 3
-    b 2
-    e 5
-    d 4
+    [('a', 1), ('c', 3), ('b', 2), ('e', 5), ('d', 4)]
 
-But in Python 3, order of elements is different every time::
+The predictable ordering is a side effect of predictable
+:func:`hashing <py2:hash>`.
+Unfortunately, in some cases malicious users could take advantage of the
+predictability to cause denial of service attacks.
+(See `CVE-2012-1150`_ for more details.)
+To counter this vulnerability, Python 2.6.8+ and 2.7.3+ allows randomizing the
+hash function, and thus dictionary order, on each invocation of the interpreter.
+This is done by setting the environment variable ``$PYTHONHASHSEED``
+to ``random``::
 
-    $ python3 order.py 
-    e 5
-    a 1
-    d 4
-    c 3
-    b 2
+    $ PYTHONHASHSEED=random python2 order.py
+    [('b', 2), ('c', 3), ('a', 1), ('d', 4), ('e', 5)]
 
-    $ python3 order.py 
-    b 2
-    c 3
-    a 1
-    d 4
-    e 5
+    $ PYTHONHASHSEED=random python2 order.py
+    [('e', 5), ('d', 4), ('a', 1), ('c', 3), ('b', 2)]
 
-    $ python3 order.py 
-    c 3
-    b 2
-    a 1
-    e 5
-    d 4
+In Python 3.3+, this setting is the default::
 
-The reason for this change is the implementation of security fix from 2012 which
-enables hash randomization. Hash randomization causes the iteration order of dict
-and sets to be unpredictable and differ across Python runs. Previous predictable
-behavior can be used by an attacker to create DoS (Denial of Service) attack
-which use predictable collisions in the underlying hashing algorithms and
-which can lead to a 100% CPU usage.
+    $ python3 order.py
+    [('a', 1), ('d', 4), ('e', 5), ('c', 3), ('b', 2)]
 
+    $ python3 order.py
+    [('c', 3), ('e', 5), ('d', 4), ('a', 1), ('b', 2)]
+
+Unfortunately, an automated fixer is not available.
+However, the issue can be detected by running the code under Python 2
+with ``PYTHONHASHSEED=random``.
+Do that, and investigate and fix any failures.
+
+
+.. _CVE-2012-1150: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1150
 
 Dict Views and Iterators
 ~~~~~~~~~~~~~~~~~~~~~~~~
