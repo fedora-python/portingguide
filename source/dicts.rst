@@ -48,7 +48,7 @@ Python has never guaranteed order of keys in a dict, and applications
 shouldn't rely on it. Historically, order of elements in dict has not changed
 very often and always remained consistent between successive executions of Python.
 
-Suppose we have a simple script with following content::
+Suppose we have a simple script with the following content::
 
     $ cat order.py 
     from __future__ import print_function
@@ -58,8 +58,8 @@ Suppose we have a simple script with following content::
     for key in dictionary:
         print(key, dictionary[key])
 
-With ``python2``, result contains elements of dict in same order for every
-execution. This order is not same as original one, but it's stable::
+With ``python2``, the result contains elements of dict in the same order
+for every execution. This order is not same as original one, but it's stable::
 
     $ python2 order.py
     a 1
@@ -105,10 +105,10 @@ But in Python 3, order of elements is different every time::
     e 5
     d 4
 
-The reason for this change is implementation of security fix from 2012 which
+The reason for this change is the implementation of security fix from 2012 which
 enables hash randomization. Hash randomization causes the iteration order of dict
 and sets to be unpredictable and differ across Python runs. Previous predictable
-behaviour can be used by attacker to create DoS (Denial of Service) attack
+behavior can be used by an attacker to create DoS (Denial of Service) attack
 which use predictable collisions in the underlying hashing algorithms and
 which can lead to a 100% CPU usage.
 
