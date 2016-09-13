@@ -174,9 +174,11 @@ In most real-world use cases, the memory difference is entirely negligible:
 the extra list is a fraction of the size of a dictionary, and tiny compared
 to the data itself.
 Any speed difference is almost always negligible.
-So, we suggest using the more readable variant unless special optimizations
-are needed (for example, if the dictionary could contain millions of items
-or more).
+So, we suggest using the more readable variant unless either:
+
+* not all items are processed (for example, a ``break`` ends the loop early), or
+* special optimizations are needed (for example, if the dictionary could
+  contain millions of items or more).
 
 Fixer caveats
 .............
@@ -188,36 +190,43 @@ to change, but addressing each such place individually by hand.
 
 For example, the fixer will change::
 
-    for key in somedict.keys():
-        print key
+    key_list = dictionary.keys()
+    for key in key_list:
+        print(key)
 
 to::
 
-    for key in list(somedict.keys()):
+    key_list = list(dictionary.keys())
+    for key in key_list:
         print(key)
 
 This change is entirely unnecessary.
 The new version is less performant (in  both Python 2 and Python 3),
 and less readable.
-However, the fixer cannot detect that the loop never changes ``somedict``,
+However, the fixer cannot detect that the list is only used for iteration,
 so it emits overly defensive code.
 
 In this case, both speed and readibility can be improved by iterating over
 the dict itself::
 
-    for key in somedict:
+    for key in dictionary:
         print(key)
 
-As another exaple, the fixer will change::
+Also, the fixer will not change instances code that modifies a dictionary
+while iterating over it. The following is valid in Python 2, where
+an extra copy of keys is iterated over::
 
-    keys = dictionary.keys()
-    keys.sort()
+    for key in dictionary.keys():
+        del dictionary[key]
 
-to::
+In Python 3, this will raise ``RuntimeError: dictionary changed size during iteration``.
 
-    keys = list(dictionary.keys())
-    keys.sort()
+In this particular case, ``dictionary.clear()`` can replace the loop.
+More generally, this kind of issue may be solved by creating a list explicitly::
 
-but a better solution would be creating a list that is already sorted::
+    for key in list(dictionary.keys()):
+        del dictionary[key]
 
-    keys = sorted(dictionary)
+The fixer will not change code like this.
+However, the ``RuntimeError`` makes the issue easy to detect.
+
