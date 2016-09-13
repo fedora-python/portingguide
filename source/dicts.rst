@@ -1,7 +1,7 @@
 Dictionaries
 ------------
 
-There are two most significant changes related to dictionaries in Python 3.
+There are three most significant changes related to dictionaries in Python 3.
 
 Removed ``dict.has_key()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -44,7 +44,73 @@ for such objects.
 Randomized Key Order
 ~~~~~~~~~~~~~~~~~~~~
 
-XXX
+Python has never guaranteed order of keys in a dict, and applications
+shouldn't rely on it. Historically, order of elements in dict has not changed
+very often and always remained consistent between successive executions of Python.
+
+Suppose we have a simple script with following content::
+
+    $ cat order.py 
+    from __future__ import print_function
+
+    dictionary = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+
+    for key in dictionary:
+        print(key, dictionary[key])
+
+With ``python2``, result contains elements of dict in same order for every
+execution. This order is not same as original one, but it's stable::
+
+    $ python2 order.py
+    a 1
+    c 3
+    b 2
+    e 5
+    d 4
+
+    $ python2 order.py 
+    a 1
+    c 3
+    b 2
+    e 5
+    d 4
+
+    $ python2 order.py 
+    a 1
+    c 3
+    b 2
+    e 5
+    d 4
+
+But in Python 3, order of elements is different every time::
+
+    $ python3 order.py 
+    e 5
+    a 1
+    d 4
+    c 3
+    b 2
+
+    $ python3 order.py 
+    b 2
+    c 3
+    a 1
+    d 4
+    e 5
+
+    $ python3 order.py 
+    c 3
+    b 2
+    a 1
+    e 5
+    d 4
+
+The reason for this change is implementation of security fix from 2012 which
+enables hash randomization. Hash randomization causes the iteration order of dict
+and sets to be unpredictable and differ across Python runs. Previous predictable
+behaviour can be used by attacker to create DoS (Denial of Service) attack
+which use predictable collisions in the underlying hashing algorithms and
+which can lead to a 100% CPU usage.
 
 
 Dict Views and Iterators
