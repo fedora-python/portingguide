@@ -4,6 +4,10 @@ Comparing and Sorting
 Comparing and sorting undergo a large number of changes in Python 3 but you
 can use a lot of functionality described below since Python 2.4.
 
+In short, the ``__cmp__()`` special method is never called, there is no ``cmp``
+parameter to any of the sorting-related functions, and there is no builtin
+``cmp()`` function.
+
 
 The ``cmp`` Argument
 ~~~~~~~~~~~~~~~~~~~~
@@ -52,6 +56,86 @@ used as lambda. Again the same example as before::
 The ``cmp`` Function
 ~~~~~~~~~~~~~~~~~~~~
 
+* :ref:`Fixer <python-modernize>`: *None*
+* Prevalence: Common
+
+Since having ``__cmp__()`` and rich comparison methods goes against the
+principle of there is only one obvious way to do something, Python 3
+ignores the ``__cmp__()`` method. Also, the cmp() function is gone.
+
+If you really need the ``cmp()`` functionality, you could use the expression::
+
+    (a > b) - (a < b)
+
+as the equivalent for cmp(a, b), but rich comparisons gives you a good way
+to handle this changes.
+
 Rich Comparisons
 ~~~~~~~~~~~~~~~~
 
+* :ref:`Fixer <python-modernize>`: *None*
+* Prevalence: Common
+
+Suppose that you have a class to represent person with ``__cmp__()``
+implemented::
+
+    class Person(object):
+        def __init__(self, firstname, lastname):
+             self.first = firstname
+             self.last = lastname
+
+        def __cmp__(self, other):
+            return cmp((self.last, self.first), (other.last, other.first))
+
+        def __repr__(self):
+            return "%s %s" % (self.first, self.last)
+
+If only thing you need to support is sorting, you just need to change
+``__cmp__()`` implementation to ``__lt__()``. The previous example will
+look like this::
+
+    class Person(object):
+        def __init__(self, firstname, lastname):
+             self.first = firstname
+             self.last = lastname
+
+        def __lt__(self, other):
+            return ((self.last, self.first) < (other.last, other.first))
+
+        def __repr__(self):
+            return "%s %s" % (self.first, self.last)
+
+Since Python 3.2 there is a simple way how to support other comparison
+operators without separated implementation for each of them. Solution is
+``@total_ordering`` decorator from ``functools`` module.
+
+If you want to use ``@total_ordering`` decorator, your class only has to
+implement one of ``__lt__()``, ``__le__()``, ``__gt__()``, or ``__ge__()``
+and in addition it should implement ``__eq__()``. If these conditions are
+satisfied, you can use ``@total_ordering`` to gain the rest of comparison
+operators in your class.
+
+Final implementation might look like this::
+
+    from functools import total_ordering
+
+    @total_ordering
+    class Person(object):
+
+        def __init__(self, firstname, lastname):
+            self.first = firstname
+            self.last = lastname
+
+        def __eq__(self, other):
+            return ((self.last, self.first) == (other.last, other.first))
+
+        def __lt__(self, other):
+            return ((self.last, self.first) < (other.last, other.first))
+
+        def __repr__(self):
+            return "%s %s" % (self.first, self.last)
+
+But sometimes it might be better to implement all six comparison methods
+manually because easy solution with ``@total_ordering`` does come at
+the cost of slower execution and more complex stack traces for the
+derived comparison methods.
