@@ -14,19 +14,17 @@ Strict approach to comparing in Python 3 makes it impossible to compare the
 different types of objects.
 
 While this example where we try to compare ``int`` and ``str`` in Python 2
-works (with bad result)::
+works (with unpredictable result)::
 
     >>> 2 < '2'
     True
 
-In Python 3 not::
+In Python 3, it fails with a well described error message::
 
     >>> 2 < '2'
     Traceback (most recent call last):
     File "<stdin>", line 1, in <module>
     TypeError: unorderable types: int() < str()
-
-with well described error message.
 
 If you still need to compare different types of objects, you have to
 implement it by yourself (described below) or use function like ``int()``,
