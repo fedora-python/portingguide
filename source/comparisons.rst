@@ -10,16 +10,16 @@ Details and porting strategies follow.
 Unorderable Types
 ~~~~~~~~~~~~~~~~~
 
-Strict approach to comparing in Python 3 makes it impossible to compare the
-different types of objects.
+The strict approach to comparing in Python 3 makes it generally impossible to
+compare different types of objects.
 
-While this example where we try to compare ``int`` and ``str`` in Python 2
+For example, in Python 2, comparing ``int`` and ``str``
 works (with unpredictable result)::
 
     >>> 2 < '2'
     True
 
-In Python 3, it fails with a well described error message::
+but in Python 3, it fails with a well described error message::
 
     >>> 2 < '2'
     Traceback (most recent call last):
@@ -27,8 +27,8 @@ In Python 3, it fails with a well described error message::
     TypeError: unorderable types: int() < str()
 
 If you still need to compare different types of objects, you have to
-implement it by yourself (described below) or use function like ``int()``,
-``float()`` or ``str()`` to change type of compared object.
+implement a key function to fully describe how disparate types should be
+ordered.
 
 
 Rich Comparisons
