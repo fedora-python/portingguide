@@ -3,7 +3,7 @@ Syntax Changes
 
 Python 3 cleaned up some warts of the language's syntax.
 
-The changes needed to accomodate this are mostly mechanical, with
+The changes needed to accommodate this are mostly mechanical, with
 little chance of breaking code, so they work well as the first patches
 to send to a project when intending to port it.
 
@@ -105,7 +105,7 @@ The Inequality Operator
 In the spirit of “There's only one way to do it”, Python 3 removes the
 little-known alternate spelling for inequality: the ``<>`` operator.
 
-The recommended fixer will replace all occurences with ``!=``.
+The recommended fixer will replace all occurrences with ``!=``.
 
 
 New Reserved Words

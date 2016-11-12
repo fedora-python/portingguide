@@ -2,7 +2,7 @@ Importing
 ---------
 
 Python 3 brings a complete overhaul of the way ``import`` works,
-but developer-visible changes
+but developer-visible changes can be summarised as follows.
 
 
 Absolute imports
@@ -52,8 +52,8 @@ In Python 3, the feature becomes the default.
 
 To prepare for this, make sure all imports are either absolute, or *explicitly*
 relative.
-Both the ``mypkg.collections`` stlye and the ``.collections`` style are
-adequate; we recommend the former for increased readibility [#f1]_.
+Both the ``mypkg.collections`` style and the ``.collections`` style are
+adequate; we recommend the former for increased readability [#f1]_.
 
 The recommended fixer simply adds the future import to all files that
 do a potentially ambiguous import.
