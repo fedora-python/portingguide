@@ -13,9 +13,9 @@ Before you start porting, any libraries that your code imports need to run
 with Python 3.
 Check if this is the case.
 
-As first you can get porting status information from ``setup.py`` or
+Porting status information of a library is usually available in ``setup.py`` or
 ``setup.cfg`` files, where compatible Python versions can be mentioned in
-classifiers.
+``classifiers`` argument to ``setup()``.
 
 Some projects took advantage of the backwards incompatible upgrade to clean
 up their interfaces.

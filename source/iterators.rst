@@ -20,7 +20,7 @@ to apply a more specific fix.
 
 * Prevalence: Common
 
-in Python 3, the :func:`py3:map` and :func:`py3:filter` functions return
+In Python 3, the :func:`py3:map` and :func:`py3:filter` functions return
 iterators (``map`` or ``filter`` objects, respectively).
 In Python 2, they returned lists.
 

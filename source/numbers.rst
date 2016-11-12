@@ -49,7 +49,7 @@ Special Methods
 
 To overload the ``/`` operator for a class in Python 2, one defined
 the ``__div__`` special method.
-With the divisoin change, there are two methods to define:
+With the division change, there are two methods to define:
 
 
 * ``__floordiv__``
@@ -91,8 +91,8 @@ The ``long`` builtin no longer exists.
 However, calling ``int`` on a number that doesn't fit in Python 2's ``int``
 range will automatically create a ``long`` with the appropriate value.
 
-The same automatic conversion to long happens on all operations on ``int``
-that overflow: for example, ``10**50`` results in a long on most systems.
+The same automatic conversion to ``long`` happens on all operations on ``int``
+that overflow: for example, ``10**50`` results in a ``long`` on most systems.
 
 The range of Python 2's ``int`` is system-dependent.
 Together with the automatic conversion, this means that code that depends

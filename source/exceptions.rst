@@ -14,7 +14,7 @@ Exceptions are now instances of dedicated classes.
 They contain all information about the error: the type, value and traceback.
 
 This chapter mentions all exception-related changes needed to start
-supportingPython 3.
+supporting Python 3.
 
 
 .. _except-syntax:
@@ -128,7 +128,7 @@ Iterating Exceptions
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_except``
 * Prevalence: Rare
 
-In Python 2, exceptions were *iterable*. so it was possible to “unpack” the
+In Python 2, exceptions were *iterable*, so it was possible to “unpack” the
 arguments of an exception as part of the ``except`` statement::
 
     except RuntimeError as (num, message):
@@ -138,7 +138,7 @@ In Python 3, this is no longer true::
     except RuntimeError as e:
         num, message = e.args
 
-The reccommended fixer catches the easy cases of unpacking in ``except``
+The recommended fixer catches the easy cases of unpacking in ``except``
 statements.
 If your code iterates through exceptions elsewhere, you need to manually
 change it to iterate over ``args`` instead.
@@ -184,7 +184,7 @@ The :class:`py2:StandardError` class is removed in Python 3.
 It was the base class for built-in exceptions, and it proved to be an
 unnecessary link in almost any exception's inheritance chain.
 
-The reccommended fixer will replace all uses of ``StandardError`` with
+The recommended fixer will replace all uses of ``StandardError`` with
 ``Exception``.
 Review the result to check if this is correct: for example, code might rely
 on the name of an exception class, or on exceptions not derived from

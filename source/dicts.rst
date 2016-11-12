@@ -33,7 +33,7 @@ a :meth:`~py3:object.__contains__` method to it to implement the
 ``in`` operator.
 If possible, mark the ``has_key`` method as deprecated.
 Then run the fixer, and review the output.
-Typically, the fixer's changes will need to be be reverted in tests for the
+Typically, the fixer's changes will need to be reverted in tests for the
 ``has_key`` method itself.
 
 If you are using objects with unrelated semantics for the attribute
@@ -206,7 +206,7 @@ and less readable.
 However, the fixer cannot detect that the list is only used for iteration,
 so it emits overly defensive code.
 
-In this case, both speed and readibility can be improved by iterating over
+In this case, both speed and readability can be improved by iterating over
 the dict itself::
 
     for key in dictionary:
