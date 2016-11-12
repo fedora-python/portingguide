@@ -43,7 +43,7 @@ In Python 2, ``__cmp__(self, other)`` implemented comparison between two
 objects, returning a negative value if ``self < other``, positive if
 ``self > other``, and zero if they were equal.
 
-This approach of trepresenting comparison results is common in C-style
+This approach of representing comparison results is common in C-style
 languages. But, early in Python 2 development, it became apparent that
 only allowing three cases for the relative order of objects is too limiting.
 
@@ -211,7 +211,7 @@ one way to sort it by last name in Python 2 would be::
 This function is called many times – O(*n* log *n*) – during the comparison.
 
 As an alternative to *cmp*, sorting functions can take a keyword-only ``key``
-parameter, a function that returs the key under which to sort::
+parameter, a function that returns the key under which to sort::
 
     >>> def keyfunction(item):
     ...     """Key for comparison by last name"""
@@ -227,7 +227,7 @@ the many comparisons are then handled by optimized C code.
 Also, in most cases key functions are more readable than *cmp*: usually,
 one thinks of sorting by some aspect of an object (such as last name),
 rather than by comparing individual objects.
-The main disdvantage is that the old *cmp* style is commonly used in
+The main disadvantage is that the old *cmp* style is commonly used in
 C-language APIs, so external libraries are likely to provide similar functions.
 
 In Python 3, the ``cmp`` parameter was removed, and only ``key`` (or no

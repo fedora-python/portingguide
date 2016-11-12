@@ -15,7 +15,7 @@ In Python 2, the ``str`` type was used for two different kinds of values –
     This type is available as ``str`` in Python 3, and ``unicode``
     in Python 2.
 
-    In code, we will refer to this type as ``unicode`` – a short, unabmbiguous
+    In code, we will refer to this type as ``unicode`` – a short, unambiguous
     name, although one that is not built-in in Python 3.
     Some projects refer to it as ``six.text_type`` (from the :ref:`six`
     library).
@@ -23,7 +23,7 @@ In Python 2, the ``str`` type was used for two different kinds of values –
 *
 
     **Bytes** or *bytestring* is a binary serialization format suitable for
-    storing data on on disk or sending it over the wire. It is a sequence of
+    storing data on disk or sending it over the wire. It is a sequence of
     integers between 0 and 255.
     Most data – images, sound, configuration info, or *text* – can be
     serialized (encoded) to bytes and deserialized (decoded) from
@@ -53,7 +53,7 @@ can use what is conceptually a third type:
     The **native string** (``str``) – text in Python 3, bytes in Python 2
 
 Custom ``__str__`` and ``__repr__`` methods, and code that deals with
-Python language objects (such as atribute/function names) will always need to
+Python language objects (such as attribute/function names) will always need to
 use the native string, because that is what each version of Python uses
 for text-like data.
 
@@ -63,7 +63,7 @@ For other data, you can use the native string in these circumstances:
     * Under Python 2, each “native string” value has a well-defined encoding
       (such as ``UTF-8`` or :func:`py2:locale.getpreferredencoding`)
     * You do not mix native strings with either bytes or text – always
-      encode/decode dilligently when converting to these types.
+      encode/decode diligently when converting to these types.
 
 Native strings affect the semantics under Python 2 as little as possible,
 while not requiring the resulting Python 3 API to feel bad. But, adding

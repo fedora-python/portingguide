@@ -61,7 +61,7 @@ The ``urllib`` modules
 * Prevalence: Common
 
 The :mod:`py2:urllib`, :mod:`py2:urllib2` and :mod:`py2:urlparse` modules were
-reorganized more heavily, with individual functions and classes reistributed to
+reorganized more heavily, with individual functions and classes redistributed to
 submodules of Python 3's :mod:`urllib`: :mod:`urllib.parse`, :mod:`urllib.error`,
 :mod:`urllib.request`, and :mod:`urllib.response`.
 
