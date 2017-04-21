@@ -164,10 +164,73 @@ For example, these are all illegal::
 Type checking
 -------------
 
-XXX: basestring
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_basestring``
+* Prevalence: Rare
+
+Because the ``str`` and ``unicode`` types in Python 2 could be used
+interchangeably, it sometimes didn't matter which of the types a particular
+value had. For these cases, Python 2 provided the class :class:`py2:basestring`,
+from which both ``str`` and ``unicode`` derived::
+
+    if isinstance(value, basestring):
+        print("It's stringy!")
+
+In Python 3, the concept of ``basestring`` makes no sense: text is only
+represented by ``str``.
+
+For type-checking text strings in code compatible with both versions, the
+:ref:`six` library offers ``string_types``, which is ``(basestring,)``
+in Python 2 and ``(str,)`` in Python 3.
+The above code can be replaced by::
+
+    import six
+
+    if isinstance(value, six.string_types):
+        print("It's stringy!")
+
+The recommended fixer will import ``six`` and replace any uses of
+``basestring`` by ``string_types``.
 
 
-The New File I/O Stack
-~~~~~~~~~~~~~~~~~~~~~~
+File I/O
+~~~~~~~~
 
-XXX: io.open
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_open``
+* Prevalence: Common
+
+In Python 2, reading from a file opened by :func:`py2:open` yielded the generic
+``str``.
+In Python 3, the type of file contents depends on the mode the file was opened
+with. By default, this is text strings; ``b`` in mode selects bytes::
+
+    with open('/etc/passwd') as f:
+        f.read()  # text
+
+    with open('/bin/sh', 'rb') as f:
+        f.read()  # bytes
+
+On disk, all files are stored as bytes.
+For text-mode files, their content is decoded automatically.
+The default encoding is ``locale.getpreferredencoding(False)``, but this might
+not always be appropriate, and may cause different behavior across systems.
+If the encoding of a file is known, we recommend always specifying it::
+
+    with open('data.txt', encoding='utf-8') as f:
+        f.read()
+
+Similar considerations apply when writing to files.
+
+The behavior of ``open`` is quite different between Python 2 and 3.
+However, from Python 2.6 on, the Python 3 version is available in the :mod:`io`
+module.
+We recommend replacing the built-in ``open`` function with ``io.open``,
+and using the new semantics – that is, text files contain ``unicode``::
+
+    from io import open
+
+    with open('data.txt', encoding='utf-8') as f:
+        f.read()
+
+The recommended fixer will add the ``from io import open`` import, but it
+will not add ``encoding`` arguments.
+We recommend adding them manually if the encoding is known.
