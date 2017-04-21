@@ -6,12 +6,6 @@ and to check for common errors.
 Here is a survey of tools we recommend.
 
 
-python -3
----------
-
-XXX: Elaborate
-
-
 .. _six:
 
 six
