@@ -71,7 +71,8 @@ should be changed to::
 
     powered = [power_function(num) for num in numbers]
 
-Alternatively, you can keep the higher-order function call.
+Alternatively, you can keep the higher-order function call, and wrap the
+result in ``list``.
 However, many people will find the resulting code less readable::
 
     def power_function(x):
@@ -120,7 +121,7 @@ In many cases, the fixers do a good job discerning the different usages of
 But they are not perfect.
 Always review the fixers' result with the above advice in mind.
 
-The fixers do not work properly if the global variables ``map`` or ``filter``
+The fixers do not work properly if the names ``map`` or ``filter``
 are rebound to something else than the built-in functions.
 If your code does this, you'll need to do appropriate changes manually.
 
@@ -148,7 +149,7 @@ The recommended fixer adds the mentioned import, and changes calls to
 If you review the result, you might find additional places where conversion
 to ``list`` is not necessary.
 
-The fixer does not work properly if the global variable ``zip``
+The fixer does not work properly if the name ``zip``
 is rebound to something else than the built-in function.
 If your code does this, you'll need to do appropriate changes manually.
 
@@ -192,7 +193,7 @@ If the result is not mutated, and the number of elements doesn't exceed
 several thousands, the list and the range behave very similarly.
 In this case, just change ``xrange`` to ``range``; no import is needed.
 
-If the global variable ``zip`` is rebound to something else than the built-in
+If the name ``zip`` is rebound to something else than the built-in
 function, the fixer will not work properly.
 In this case you'll need to do appropriate changes manually.
 

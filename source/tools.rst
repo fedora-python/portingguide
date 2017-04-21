@@ -97,7 +97,7 @@ For these, we have two pieces of advice:
   C extensions away from the Cython C API. For wrappers to external libraries
   we recommend `CFFI`_; for code that needs to be fast there's `Cython`_.
 
-  This is relatively disruptive, the result will very likely be more
+  While this is relatively disruptive, the result will very likely be more
   maintainable and less buggy, as well as more portable to alternative Python
   implementations.
 

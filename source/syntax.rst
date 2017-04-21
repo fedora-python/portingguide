@@ -66,7 +66,7 @@ something more appropriate.
 
 As for ``lambda``, this transformation can leave the code less readable than
 before.
-In each case you should consider if replacing the ``lambda`` with a regular
+For each such ``lambda``, you should consider if replacing it with a regular
 named function would be an improvement.
 
 
@@ -128,5 +128,6 @@ For convenience and completeness, this section lists syntax changes covered
 in other chapters:
 
 * :ref:`import-star`
+* :ref:`octal-literals`
 
 .. todo:: complete list

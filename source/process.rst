@@ -83,35 +83,35 @@ Port Small Pieces First
 If the codebase contains a small, self-contained module, port it first
 before moving on to larger pieces or the entire code.
 
-If you want to learn more practical way, before you port your own software,
-you can help developers with porting some open source software or your
-favorite library or application.
+If you want to learn porting in a more practical way before you port your
+own software, you can help developers with porting some open source software
+or your favorite library or application.
 
 
-One Change per Commit
-.....................
+Do One Change per Commit
+........................
 
 For changes that are mechanical, and easily automated, we recommend that
 you do only one type of change per commit/patch.
 For example, one patch to change the :ref:`except syntax <except-syntax>`,
 then another for the :ref:`raise syntax <raise-syntax>`.
 Do not submit a single patch saying “Port to Python 3”.
-Following this workflow makes the changes much easier to review.
+This makes the changes much easier to review.
 
 The descriptions of individual items in this guide are written so that you
 can use them in commit messages with minimal changes to explain why each change
 is necessary and to link to more information.
 
 
-The Rest of this Guide
-......................
+Follow the Rest of this Guide
+.............................
 
 The next chapter, :doc:`tools`, explains how to automate porting and checking.
 
 Each of the subsequent chapters explains one area where Python 3 differs from
 Python 2, and how to adapt the code.
 The chapters are arranged roughly according to the order in which they are
-tacked in a typical project.
+tackled in a typical project.
 
 We recommend that you skim the introduction of each of the chapters,
 so that you know what you're up against before you start.

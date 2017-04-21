@@ -20,12 +20,12 @@ you should use::
 
     'keyname' in dictionary
 
-Note that the recommended fixer replaces all calls to any ``has_key`` method;
+Note that the recommended fixer replaces all calls to *any* ``has_key`` method;
 it does not check that its object is actually a dictionary.
 
 If you use a third-party non-dict-like class, it should implement ``in``
 already.
-If not, complain to its author: it should have been added as part of
+If not, complain to its author: it should have been added as part of adding
 Python 3 support.
 
 If your own codebase contains a custom dict-like class, add
@@ -41,8 +41,8 @@ If you are using objects with unrelated semantics for the attribute
 for such objects.
 
 
-Randomized Key Order
-~~~~~~~~~~~~~~~~~~~~
+Changed Key Order
+~~~~~~~~~~~~~~~~~
 
 * Fixer: None
 * Prevalence: Uncommon
@@ -58,7 +58,7 @@ Suppose we have a simple script with the following content::
     dictionary = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
     print(list(dictionary.items()))
 
-With ``python2``, the result contains elements of dict in the same order
+With ``python2``, the result contained elements of dict in the same order
 for every execution::
 
     $ python2 order.py
@@ -75,7 +75,7 @@ The predictable ordering is a side effect of predictable
 Unfortunately, in some cases malicious users could take advantage of the
 predictability to cause denial of service attacks.
 (See `CVE-2012-1150`_ for more details.)
-To counter this vulnerability, Python 2.6.8+ and 2.7.3+ allows randomizing the
+To counter this vulnerability, Python 2.6.8+ and 2.7.3+ allowed randomizing the
 hash function, and thus dictionary order, on each invocation of the interpreter.
 This is done by setting the environment variable ``$PYTHONHASHSEED``
 to ``random``::
@@ -94,7 +94,15 @@ In Python 3.3+, this setting is the default::
     $ python3 order.py
     [('c', 3), ('e', 5), ('d', 4), ('a', 1), ('b', 2)]
 
-Unfortunately, an automated fixer is not available.
+Additionally, CPython 3.6+ uses a new implementation of dictionaries,
+which makes them appear sorted by insertion order (though you shouldn't rely
+on this behavior)::
+
+    $ python3 order.py
+    [('a', 1), ('b', 2), ('c', 3), ('d', 4), ('e', 5)]
+
+Unfortunately, an automated fixer for removing dependencies on dict order
+is not available.
 However, the issue can be detected by running the code under Python 2
 with ``PYTHONHASHSEED=random``.
 Do that, and investigate and fix any failures.

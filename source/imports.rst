@@ -1,8 +1,10 @@
 Importing
 ---------
 
-Python 3 brings a complete overhaul of the way ``import`` works,
-but developer-visible changes can be summarised as follows.
+Python 3 brings a complete overhaul of the way ``import`` works – the import
+machinery was ported from C to Python.
+
+Developer-visible changes are summarised below.
 
 
 Absolute imports
@@ -27,7 +29,7 @@ If ``core.py`` contains::
 
     from collections import deque
 
-it would import the ``deque`` from ``collections.py``.
+it would import the ``deque`` from ``mypkg/collections.py``.
 The standard library's ``collections`` module would be unavailable.
 
 In Python 2.5, the situation began changing with the introduction of explicit
@@ -112,5 +114,6 @@ a separate module.
 
 .. [#f1] The downside of spelling out the package name is that it becomes
    harder to rename or reorganize the package.
-   In practice, the added work tends to be insignificant compared to updating
-   all external modules that import your package.
+   In practice, if you do rename a project, the work added by absolute imports
+   tends to be insignificant compared to updating all external modules that
+   import your package.

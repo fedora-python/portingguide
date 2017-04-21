@@ -13,8 +13,8 @@ Unorderable Types
 The strict approach to comparing in Python 3 makes it generally impossible to
 compare different types of objects.
 
-For example, in Python 2, comparing ``int`` and ``str``
-works (with unpredictable result)::
+For example, in Python 2, comparing ``int`` and ``str`` works
+(with results that are unpredictable across Python implementations)::
 
     >>> 2 < '2'
     True
@@ -26,9 +26,12 @@ but in Python 3, it fails with a well described error message::
     File "<stdin>", line 1, in <module>
     TypeError: unorderable types: int() < str()
 
-If you still need to compare different types of objects, you have to
-implement a key function to fully describe how disparate types should be
-ordered.
+The change usually manifests itself in sorting lists: in Python 3, lists
+with items of different types are generally not sortable.
+
+If you need to sort heterogeneous lists, or compare different types of objects,
+implement a key function to fully describe how disparate types
+should be ordered.
 
 
 Rich Comparisons
@@ -78,7 +81,7 @@ To avoid the hassle of providing all six functions, you can implement
 Note that the decorator is not available in Python 2.6. If you need
 to support that version, you'll need to supply all six methods.
 
-The ``@total_ordering`` decorator does come at the cost of somewhat slower
+The ``@total_ordering`` decorator does come with the cost of somewhat slower
 execution and more complex stack traces for the derived comparison methods,
 so defining all six explicitly may be necessary in some cases even if
 Python 2.6 support is dropped.
@@ -160,8 +163,8 @@ The ``cmp`` Function
 As part of the move away from *cmp*-style comparisons, the :func:`py2:cmp`
 function was removed in Python 3.
 
-If it is necessary – usually to conform to an external API, it can be provided
-by this code::
+If it is necessary (usually to conform to an external API), you can provide it
+with this code::
 
     def cmp(x, y):
         """
@@ -225,7 +228,7 @@ each item.
 When simple types such as tuples, strings, and numbers are used for keys,
 the many comparisons are then handled by optimized C code.
 Also, in most cases key functions are more readable than *cmp*: usually,
-one thinks of sorting by some aspect of an object (such as last name),
+people think of sorting by some aspect of an object (such as last name),
 rather than by comparing individual objects.
 The main disadvantage is that the old *cmp* style is commonly used in
 C-language APIs, so external libraries are likely to provide similar functions.

@@ -19,7 +19,7 @@ For example, instead of::
 
     from ConfigParser import ConfigParser
 
-you should import ``six.moves``::
+you should import from ``six.moves``::
 
     from six.moves.configparser import ConfigParser
 
@@ -69,7 +69,8 @@ These functions are included in ``six.moves``, and the `six documentation`_
 has details on what moved where.
 Use this information to adjust your code.
 
-The ``fix_imports_six`` does not handle all urllib moves.
+The ``fix_imports_six`` fixer recommended above does not handle all urllib
+moves, so manual changes may be necessary.
 
 .. todo:: copy list here, to fill the index
 

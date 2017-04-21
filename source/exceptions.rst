@@ -9,9 +9,10 @@ allowed in Python 2.
 This presents confusion to learners of the language, and prevents some
 performance optimizations.
 
-Python 3 consolidates the exception model.
-Exceptions are now instances of dedicated classes.
-They contain all information about the error: the type, value and traceback.
+Python 3 removes the deprecated practices.
+It also further consolidates the exception model.
+Exceptions are now instances of dedicated classes, and contain all
+information about the error: the type, value and traceback.
 
 This chapter mentions all exception-related changes needed to start
 supporting Python 3.
@@ -25,7 +26,7 @@ The new ``except`` syntax
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_except``
 * Prevalence: Very common
 
-In Python 2, the syntax for catching exceptions is
+In Python 2, the syntax for catching exceptions was
 ``except ExceptionType:``, or ``except ExceptionType, target:`` when the
 exception object is desired.
 ``ExceptionType`` can be a tuple, as in, for example,
@@ -68,7 +69,7 @@ In Python 3, one single object includes all information about an exception::
     e.__traceback__ = some_traceback
     raise e
 
-Python 2.6 allows the first variant. For the second, reraising an exception,
+Python 2.6 allows the first variant. For the second, re-raising an exception,
 the :ref:`six` library includes a convenience wrapper that works in both
 versions::
 
@@ -92,7 +93,7 @@ Caught Exception “Scope”
 As :ref:`discussed previously <raise-syntax>`, in Python 3, all information
 about an exception, including the traceback, is contained in the exception
 object.
-Since, the traceback holds references to the values of all local variables,
+Since the traceback holds references to the values of all local variables,
 storing an exception in a local variable usually forms a reference cycle,
 keeping all local variables allocated until the next garbage collection pass.
 
@@ -118,6 +119,8 @@ To prevent this issue, to quote from :py3:ref:`Python's documentation <try>`:
 Unfortunately, :ref:`python-modernize` does not provide a fixer for this
 change.
 This issue results in a loud ``NameError`` when tests are run.
+When you see this error, apply the recommended fix – assign a different name
+to the exception to use it outside the ``except`` clause.
 
 
 .. _iter_exc:
@@ -125,7 +128,7 @@ This issue results in a loud ``NameError`` when tests are run.
 Iterating Exceptions
 ~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_except``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_except`` (but see caveat below)
 * Prevalence: Rare
 
 In Python 2, exceptions were *iterable*, so it was possible to “unpack” the
@@ -133,7 +136,8 @@ arguments of an exception as part of the ``except`` statement::
 
     except RuntimeError as (num, message):
 
-In Python 3, this is no longer true::
+In Python 3, this is no longer true, and the arguments must be accessed through
+the ``args`` attribute::
 
     except RuntimeError as e:
         num, message = e.args
@@ -186,9 +190,11 @@ unnecessary link in almost any exception's inheritance chain.
 
 The recommended fixer will replace all uses of ``StandardError`` with
 ``Exception``.
-Review the result to check if this is correct: for example, code might rely
-on the name of an exception class, or on exceptions not derived from
-``StandardError``.
+Review the result to check if this is correct.
+
+Some code might rely on the name of an exception class, or on exceptions not
+derived from ``StandardError``, or otherwise handle ``StandardError``
+specially. You'll need to handle these casses manually.
 
 
 Removed ``sys.exc_type``, ``sys.exc_value``, ``sys.exc_traceback``

@@ -35,12 +35,12 @@ In Python 2, the ``str`` type was used for two different kinds of values –
 Ideally, every “stringy” value will explicitly and unambiguously be one of
 these types (or the native string, below).
 This means that you need to go through the entire codebase, and decide
-these two types.
+which value is what type these two types.
 Unfortunately, this process generally cannot be automated.
 
 We recommend replacing the word "string" in developer documentation
-(e.g. docstrings) with either “text”/“text string” or “bytes”/“byte string”,
-as appropriate.
+(including docstrings and comments) with either “text”/“text string” or
+“bytes”/“byte string”, as appropriate.
 
 The Native String
 -----------------
@@ -55,27 +55,30 @@ can use what is conceptually a third type:
 Custom ``__str__`` and ``__repr__`` methods, and code that deals with
 Python language objects (such as attribute/function names) will always need to
 use the native string, because that is what each version of Python uses
-for text-like data.
+for internal text-like data.
+Developer-oriented texts, such as exception messages, could also be native
+strings.
 
 For other data, you can use the native string in these circumstances:
 
     * You are working with textual data
-    * Under Python 2, each “native string” value has a well-defined encoding
-      (such as ``UTF-8`` or :func:`py2:locale.getpreferredencoding`)
+    * Under Python 2, each “native string” value has a single well-defined
+      encoding (such as ``UTF-8`` or :func:`py2:locale.getpreferredencoding`)
     * You do not mix native strings with either bytes or text – always
       encode/decode diligently when converting to these types.
 
 Native strings affect the semantics under Python 2 as little as possible,
-while not requiring the resulting Python 3 API to feel bad. But, adding
-a third incompatible type makes porting process harder, so it is suitable
-mostly for conservative projects.
+while not requiring the resulting Python 3 API to feel bad. But, having
+a third incompatible type makes porting process harder.
+Native strings are suitable mostly for conservative projects, where ensuring
+stability under Python 2 justifies extra porting effort.
 
 
 Conversion between text and bytes
 ---------------------------------
 
-It is possible to *encode* text to binary data, or *decode* bytes into
-a text string, using a particular encoding.
+It is possible to :meth:`~str.encode` text to binary data, or
+:meth:`~bytes.decode` bytes into a text string, using a particular encoding.
 By itself, a bytes object has no inherent encoding, so it is not possible
 to encode/decode without knowing the encoding.
 
@@ -85,6 +88,12 @@ without either relying on external data (such as the filename), or effectively
 trying all alternatives.
 Unlike images, one bytestring can often be successfully decoded using more
 than one encoding.
+
+So, never assume an encoding without consulting relevant documentation
+and/or researching a string's use cases.
+If an encoding for a particular use case is determined, document it.
+For example, a docstring can specify that some argument is “a bytestring
+holding UTF-8-encoded text data”.
 
 Some common encodings are:
 
@@ -97,13 +106,13 @@ Some common encodings are:
   machine-readable identifiers such as hostnames (``'python.org'``),
   or textual representations of numbers (``'1234'``, ``'127.0.0.1'``).
   Always check the relevant standard/protocol/documentation before assuming
-  a string can only be pure ASCII.
+  a string can only ever be pure ASCII.
 * ``locale.getpreferredencoding()``: The “preferred encoding” for
   command-line arguments, environment variables, and terminal input/output.
 
 
-Conversion to text or bytes
----------------------------
+Conversion to text
+------------------
 
 There is no built-in function that converts to text in both Python versions.
 The :ref:`six` library provides ``six.text_type``, which is fine if it appears
@@ -131,7 +140,10 @@ String Literals
 Quoted string literals can be prefixed with ``b`` or ``u`` to get bytes or
 text, respectively.
 These prefixes work both in Python 2 (2.6+) and 3 (3.3+).
-Literal without these prefixes result in native strings.
+Literals without these prefixes result in native strings.
+
+Add a ``b`` or ``u`` prefix to all strings, unless a native string
+is desired.
 
 
 String operations
@@ -152,8 +164,10 @@ For example, these are all illegal::
 Type checking
 -------------
 
-
+XXX: basestring
 
 
 The New File I/O Stack
 ~~~~~~~~~~~~~~~~~~~~~~
+
+XXX: io.open
