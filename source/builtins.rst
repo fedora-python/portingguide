@@ -66,10 +66,44 @@ After running it, examine the output to determine if any :func:`eval`
 it produces is really necessary.
 
 
+.. _file-builtin:
+
 ``file()``
 ~~~~~~~~~~
 
-XXX
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_file`` (but see below)
+* Prevalence: Rare
+
+In Python 2, :func:`file` was the type of an open file. It was used in two
+ways:
+
+* To open files, i.e. as an alias for :func:`open`. The documentation mentions
+  that ``open`` is more appropriate for this case.
+* To check if an object is a file, as in ``isinstance(f, file)``.
+
+The recommended fixer addresses the first use: it will rewrite all calls to
+``file()`` to ``open()``. If
+
+The fixer does not address the second case. There are many kinds of file-like
+objects in Python; in most circumstances it is better to check for
+a ``read`` or ``write`` method instead of querying the type.
+This guide's :ref:`section on strings <str-file-io>` even recommends using
+the ``io`` library, whose ``open`` function produces file-like objects that
+aren't of the ``file`` type.
+
+If type-checking for files is necessary, we recommend using a tuple of types
+that includes :class:`io.IOBase` and, under Python 2, ``file``::
+
+    import six
+    import io
+
+    if six.PY2:
+        file_types = file, io.IOBase
+    else:
+        file_types = (io.IOBase,)
+
+    ...
+    isinstance(f, file_types)
 
 
 ``apply()``

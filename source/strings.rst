@@ -192,6 +192,8 @@ The recommended fixer will import ``six`` and replace any uses of
 ``basestring`` by ``string_types``.
 
 
+.. _str-file-io:
+
 File I/O
 ~~~~~~~~
 
@@ -230,6 +232,11 @@ and using the new semantics – that is, text files contain ``unicode``::
 
     with open('data.txt', encoding='utf-8') as f:
         f.read()
+
+Note that under Python 2, the object returned by ``io.open`` has a different
+type than that returned by ``open``.
+If your code does strict type checking, consult the notes on the
+:ref:`file() built-in <file-builtin>`.
 
 The recommended fixer will add the ``from io import open`` import, but it
 will not add ``encoding`` arguments.
