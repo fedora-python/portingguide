@@ -149,11 +149,33 @@ by importing it for all versions of Python::
 The recommended fixer will add this import automatically.
 
 
+.. _exec:
 
 ``exec()``
 ~~~~~~~~~~
 
-XXX
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_exec``
+* Prevalence: Rare
+
+In Python 2, :func:`exec` was a statement. In Python 3, it is a function.
+
+There were three cases for the statement form of ``exec``::
+
+    exec some_code
+    exec some_code in globals
+    exec some_code in globals, locals
+
+Similarly, the function ``exec`` takes one to three arguments::
+
+    exec(some_code)
+    exec(some_code, globals)
+    exec(some_code, globals, locals)
+
+In Python 2, the syntax was extended so the first expression may be
+a 2- or 3-tuple. This means the function-like syntax works even in Python 2.
+
+The recommended fixer will convert all uses of ``exec`` to the function-like
+syntax.
 
 
 ``execfile()``
