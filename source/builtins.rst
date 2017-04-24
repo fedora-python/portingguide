@@ -109,7 +109,26 @@ that includes :class:`io.IOBase` and, under Python 2, ``file``::
 ``apply()``
 ~~~~~~~~~~~
 
-XXX
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_apply`` (but see below)
+* Prevalence: Common
+
+In Python 2, the function :func:`apply` was built in.
+It was useful before Python added support for passing an argument list
+to a function via the ``*`` syntax.
+
+The code::
+
+    arguments = [7, 3]
+    apply(complex, arguments)
+
+can be replaced with::
+
+    arguments = [7, 3]
+    complex(*arguments)
+
+The recommended fixer replaces all calls to ``apply`` with the new syntax.
+If the variable ``apply`` names a different function
+in some of your modules, revert the fixer's changes in that module.
 
 
 ``reduce()``
