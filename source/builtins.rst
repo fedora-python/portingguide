@@ -134,7 +134,20 @@ in some of your modules, revert the fixer's changes in that module.
 ``reduce()``
 ~~~~~~~~~~~~
 
-XXX
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_reduce``
+* Prevalence: Uncommon
+
+In Python 2, the function :func:`apply` was built in.
+In Python 3, in an effort to reduce the number of builtins, it was moved
+to the :mod:`functools` module.
+
+The new location is also available in Python 2.6+, so this removal can be fixed
+by importing it for all versions of Python::
+
+    from functools import reduce
+
+The recommended fixer will add this import automatically.
+
 
 
 ``exec()``
