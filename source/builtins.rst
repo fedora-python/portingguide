@@ -181,7 +181,7 @@ syntax.
 ``execfile()``
 ~~~~~~~~~~~~~~
 
-* None recommended
+* Fixer: None recommended
 * Prevalence: Very rare
 
 Python 2 included the function :func:`py2:execfile`, which executed
@@ -211,16 +211,53 @@ using it, as it doesn't close the file correctly.
 ``reload()``
 ~~~~~~~~~~~~
 
-XXX
+* Fixer: None
+* Prevalence: Very rare
+
+The :func:`~importlib.reload` function was built-in in Python 2.
+In Python 3, it is moved to the ``importlib`` module.
+
+Python 2.7 included an ``importlib`` module, but without a ``reload`` function.
+Python 2.6 and below didn't have an ``importlib`` module.
+
+If your code uses ``reload()``, import it conditionally on Python 3::
+
+    import six
+
+    if not six.PY2:
+        from importlib import reload
+
 
 
 ``intern()``
 ~~~~~~~~~~~~
 
-XXX
+* Fixer: None
+* Prevalence: Very rare
+
+The :func:`~importlib.intern` function was built-in in Python 2.
+In Python 3, it is moved to the ``sys`` module.
+
+If your code uses ``intern()``, import it conditionally on Python 3::
+
+    import six
+
+    if not six.PY2:
+        from sys import intern
 
 
 ``coerce()``
 ~~~~~~~~~~~~
 
-XXX
+* Fixer: None
+* Prevalence: Rare
+
+Python 3 removes the deprecated function :func:`py2:coerce`, which was only
+useful in early versions of Python.
+
+If your code uses it, modify the code to not require it.
+
+If any of your classes defines the special method ``__coerce__``,
+remove that as well, and test that the removal did not break semantics.
+
+.. XXX: I've never seen serious use of ``coerce``, so the advice is limited.
