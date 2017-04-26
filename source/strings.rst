@@ -35,7 +35,7 @@ In Python 2, the ``str`` type was used for two different kinds of values –
 Ideally, every “stringy” value will explicitly and unambiguously be one of
 these types (or the native string, below).
 This means that you need to go through the entire codebase, and decide
-which value is what type these two types.
+which value is what type.
 Unfortunately, this process generally cannot be automated.
 
 We recommend replacing the word "string" in developer documentation
