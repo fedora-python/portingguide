@@ -181,7 +181,31 @@ syntax.
 ``execfile()``
 ~~~~~~~~~~~~~~
 
-XXX
+* None recommended
+* Prevalence: Very rare
+
+Python 2 included the function :func:`py2:execfile`, which executed
+a Python file by name.
+The call::
+
+    execfile(filename)
+
+was equivalent to::
+
+    def compile_file(filename):
+        with open(filename) as f:
+            return compile(f.read(), filename, 'exec')
+
+    exec(compile_file(filename))
+
+If your code uses ``execfile``, add the above ``compile_file`` function to
+an appropriate place, then change all calls to ``execfile`` to ``exec``
+as above.
+
+Although :ref:`python-modernize` has an ``execfile`` fixer, we don't recommend
+using it, as it doesn't close the file correctly.
+
+.. XXX: file an issue in python-modernize
 
 
 ``reload()``
