@@ -149,7 +149,7 @@ is desired.
 String operations
 -----------------
 
-In Python 3, text and bytes can not be mixed.
+In Python 3, text and bytes cannot be mixed.
 For example, these are all illegal::
 
     b'one' + 'two'
