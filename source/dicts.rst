@@ -44,7 +44,7 @@ for such objects.
 Changed Key Order
 ~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Uncommon
 
 The Python language specification has never guaranteed order of keys in

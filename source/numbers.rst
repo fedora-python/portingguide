@@ -11,7 +11,7 @@ This section describes these changes in detail, along with other, minor ones.
 Division
 ~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Future import: ``from __future__ import division``
 * Prevalence: Common
 
@@ -142,7 +142,7 @@ it does not rely on the distinction, as discussed above.
 ``L`` suffix dropped from the representation
 ............................................
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 In Python 2, canonical representations of long integers included the ``L`` suffix.

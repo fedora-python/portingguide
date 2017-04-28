@@ -87,7 +87,7 @@ reliably, but do verify the resulting changes.
 Caught Exception “Scope”
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: *None*
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 As :ref:`discussed previously <raise-syntax>`, in Python 3, all information
@@ -159,7 +159,7 @@ Inspect the output and break these into multiple lines manually.
 Raising Non-Exceptions
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 In Python 3, an object used with ``raise`` must be an instance of
@@ -200,7 +200,7 @@ specially. You'll need to handle these casses manually.
 Removed ``sys.exc_type``, ``sys.exc_value``, ``sys.exc_traceback``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 These exception-related attributes of the ``sys`` module are not thread-safe,

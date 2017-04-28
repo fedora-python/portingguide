@@ -6,7 +6,7 @@ XXX
 Leaking of the Iteration Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: *None*
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 In Python 2, the iteration variable(s) of list comprehensions were considered

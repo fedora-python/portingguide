@@ -11,7 +11,7 @@ to send to a project when intending to port it.
 Tabs and Spaces
 ~~~~~~~~~~~~~~~
 
-* Fixer: see below
+* :ref:`Fixer <python-modernize>`: see below
 * Prevalence: Very common (unless the code uses a style linter)
 
 In Python 2, a tab character in indentation was considered equal to 8 spaces
@@ -111,7 +111,7 @@ The recommended fixer will replace all occurrences with ``!=``.
 New Reserved Words
 ~~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 In Python 3, ``None``, ``True`` and ``False`` are syntactically keywords,

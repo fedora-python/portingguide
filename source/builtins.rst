@@ -183,7 +183,7 @@ syntax.
 ``execfile()``
 ~~~~~~~~~~~~~~
 
-* Fixer: None recommended
+* :ref:`Fixer <python-modernize>`: None recommended
 * Prevalence: Very rare
 
 Python 2 included the function :func:`py2:execfile`, which executed
@@ -213,7 +213,7 @@ using it, as it doesn't close the file correctly.
 ``reload()``
 ~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Very rare
 
 The :func:`~importlib.reload` function was built-in in Python 2.
@@ -234,7 +234,7 @@ If your code uses ``reload()``, import it conditionally on Python 3::
 ``intern()``
 ~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Very rare
 
 The :func:`~importlib.intern` function was built-in in Python 2.
@@ -251,7 +251,7 @@ If your code uses ``intern()``, import it conditionally on Python 3::
 ``coerce()``
 ~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 Python 3 removes the deprecated function :func:`py2:coerce`, which was only

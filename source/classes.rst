@@ -7,7 +7,7 @@ for metaclasses. Read on for details.
 New-Style Classes
 ~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Very common
 
 Python 2 had two styles of classes: “old-style” and “new-style”.

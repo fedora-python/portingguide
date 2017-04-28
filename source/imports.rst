@@ -68,7 +68,7 @@ verify that your imports are not ambiguous.
 ``import *`` in Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 In Python 3, “star imports” are only allowed on the module level, not in
@@ -93,7 +93,7 @@ test coverage is enough to spot the error.
 Import Cycles
 ~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 Python 3 introduced a reworked importmentation of ``import`` in the form

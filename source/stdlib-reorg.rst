@@ -34,7 +34,7 @@ The recommended fixer will automatically change imports to use ``six.moves``.
 Removed modules
 ~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Uncommon
 
 Some modules have been removed entirely.
@@ -57,7 +57,7 @@ documentation of the specific module for recommended replacements.
 The ``urllib`` modules
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Common
 
 The :mod:`py2:urllib`, :mod:`py2:urllib2` and :mod:`py2:urlparse` modules were
@@ -78,7 +78,7 @@ moves, so manual changes may be necessary.
 The ``string`` module
 ~~~~~~~~~~~~~~~~~~~~~
 
-* Fixer: None
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
 In Python 2, the ``string`` module included functions that mirrored ``str``

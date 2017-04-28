@@ -37,7 +37,7 @@ should be ordered.
 Rich Comparisons
 ~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: *None*
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Common
 
 The :meth:`~py2:object.__cmp__` special method is no longer honored in Python 3.
@@ -157,7 +157,7 @@ all methods can be given explicitly::
 The ``cmp`` Function
 ~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: *None*
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Common
 
 As part of the move away from *cmp*-style comparisons, the :func:`py2:cmp`
@@ -185,7 +185,7 @@ library.
 The ``cmp`` Argument
 ~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: *None*
+* :ref:`Fixer <python-modernize>`: None
 * Prevalence: Uncommon
 
 In Python 2, ``.sort()`` or ``sorted()`` functions have a ``cmp`` parameter,
