@@ -82,7 +82,9 @@ ways:
 * To check if an object is a file, as in ``isinstance(f, file)``.
 
 The recommended fixer addresses the first use: it will rewrite all calls to
-``file()`` to ``open()``. If
+``file()`` to ``open()``.
+If your code uses the name ``file`` for a different function, you will need
+to revert the fixer's change.
 
 The fixer does not address the second case. There are many kinds of file-like
 objects in Python; in most circumstances it is better to check for

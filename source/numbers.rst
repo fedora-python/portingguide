@@ -95,6 +95,8 @@ Removal of the ``long`` type
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_long``
 * Prevalence: Common
 
+The ``long`` builtin no longer exists.
+
 In Python 2,  calling ``int`` on a number that doesn't fit in the machine
 ``int`` range would automatically create a ``long`` with the appropriate value.
 
