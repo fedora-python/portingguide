@@ -1,7 +1,16 @@
 Comprehensions
 --------------
 
-XXX
+List comprehensions, a shrtcut for creating lists, havew been in Python
+since version 2.0.
+Python 2.4 added a similar feature – generator expressions;
+then 2.7 (and 3.0) introduced set and dict comprehensions.
+
+All three can be thought as syntactic sugar for defining and calling a
+generator function, but since list comprehensions came before generators,
+they behaved slightly differently than the other two.
+Python 3 removes the differences.
+
 
 Leaking of the Iteration Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,7 +65,25 @@ Unfortunately, you will need to find and fix these cases manually.
 
 .. XXX: Detect this automatically!
 
+
 Comprehensions over Tuples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-XXX
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_paren``
+* Prevalence: Rare
+
+Python 2 allowed list comprehensions over bare, non-parenthesized tuples:
+
+    >>> [i for i in 1, 2, 3]
+    [1, 2, 3]
+
+In Python 3, this is a syntax error. The tuple must be enclosed in parentheses:
+
+    >>> [i for i in (1, 2, 3)]
+    [1, 2, 3]
+
+The recommended fixer will add the parentheses in the vast majority of cases.
+It does not deal with nested loops, such as
+``[x*y for x in 1, 2 for y in 1, 2]``.
+These cases are easily found, since they raise ``SyntaxError`` under Python 3.
+If they appear in your code, add the parentheses manually.
