@@ -148,5 +148,28 @@ would be::
 ``__bool__``
 ~~~~~~~~~~~~
 
+* :ref:`Fixer <python-modernize>`: None
+* Prevalence: Common
+
+Python 2 used the ``__nonzero__`` metod to convert an object to boolean,
+i.e. to provide an implementation for :func:`bool`.
+
+Other special methods that implement behavior for built-in functions
+are named after their respective functions.
+Keeping with this theme, Python 3 uses the name ``__bool__`` instead of
+``__nonzero__``.
+
+To make your code compatible, you can provide one implementation,
+and use an alias for the other name::
+
+    class Falsy(object):
+        def __bool__(self):
+            return False
+
+        __nonzero__ = __bool__
+
+Do this change in all classes that implement ``__nonzero__``.
+
+
 Unbound Methods
 ~~~~~~~~~~~~~~~
