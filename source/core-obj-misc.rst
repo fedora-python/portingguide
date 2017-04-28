@@ -86,7 +86,7 @@ relied on them.
 * Prevalence: Rare
 
 The special methods ``__getslice__``, ``__setslice__`` and ``__delslice__``,
-which were deprecated since Python 2.0, are no longer used in Python 3.
+which had been deprecated since Python 2.0, are no longer used in Python 3.
 Item access was unified under ``__getitem__``, ``__setitem__`` and
 ``__delitem__``.
 
