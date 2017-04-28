@@ -1,7 +1,8 @@
 Other Core Object Changes
 -------------------------
 
-XXX
+This page details miscellaneous changes to core objects: functions and
+classes.
 
 
 Function Attributes
