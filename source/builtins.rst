@@ -237,7 +237,7 @@ If your code uses ``reload()``, import it conditionally on Python 3::
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Very rare
 
-The :func:`~importlib.intern` function was built-in in Python 2.
+The :func:`~sys.intern` function was built-in in Python 2.
 In Python 3, it is moved to the ``sys`` module.
 
 If your code uses ``intern()``, import it conditionally on Python 3::
