@@ -46,12 +46,12 @@ of ``print``.
 * Prevalence: Uncommon
 
 In Python 2, the function :func:`py2:input` read a line from standard input,
-*evaluated it as Python code*, and returns the result.
+*evaluated it as Python code*, and returned the result.
 This is almost never useful – most users aren't expected to know Python syntax.
 It is also a security risk, as it allows users to run arbitrary code.
 
-Python 2 also had a sane version, :func:`py2:raw_input`, which reads a line and
-returns it as a string.
+Python 2 also had a sane version, :func:`py2:raw_input`, which read a line and
+returned it as a string.
 
 In Python 3, :func:`py3:input` has the sane semantics, and ``raw_input`` was
 removed.
