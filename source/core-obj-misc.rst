@@ -151,7 +151,7 @@ would be::
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Common
 
-Python 2 used the ``__nonzero__`` metod to convert an object to boolean,
+Python 2 used the ``__nonzero__`` method to convert an object to boolean,
 i.e. to provide an implementation for :func:`bool`.
 
 Other special methods that implement behavior for built-in functions
