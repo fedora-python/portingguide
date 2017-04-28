@@ -45,7 +45,7 @@ of ``print``.
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_input_six``
 * Prevalence: Uncommon
 
-In Python 2, the function :func:`py2:input` read a line from standard output,
+In Python 2, the function :func:`py2:input` read a line from standard input,
 *evaluated it as Python code*, and returns the result.
 This is almost never useful – most users aren't expected to know Python syntax.
 It is also a security risk, as it allows users to run arbitrary code.
