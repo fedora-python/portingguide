@@ -13,7 +13,7 @@ Function Attributes
 
 In Python, functions are mutable objects that support custom attributes.
 In such cases, special attributes (ones provided or used by the Python
-language itself) are prefised and postfixed by double underscores.
+language itself) are prefixed and postfixed by double underscores.
 
 Function objects predate this convention: their built-in attributes
 were named with the ``func_`` prefix instead.
