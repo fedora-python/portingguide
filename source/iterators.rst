@@ -193,7 +193,7 @@ If the result is not mutated, and the number of elements doesn't exceed
 several thousands, the list and the range behave very similarly.
 In this case, just change ``xrange`` to ``range``; no import is needed.
 
-If the name ``zip`` is rebound to something else than the built-in
+If the name ``range`` is rebound to something else than the built-in
 function, the fixer will not work properly.
 In this case you'll need to do appropriate changes manually.
 
