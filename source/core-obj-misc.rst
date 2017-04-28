@@ -122,7 +122,6 @@ would be::
 
         def __getitem__(self, item):
             if isinstance(item, slice):
-                print(slice.step)
                 if item.step not in (1, None):
                     raise ValueError('only step=1 supported')
                 return self.contents[item.start:item.stop]
