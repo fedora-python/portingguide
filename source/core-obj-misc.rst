@@ -173,3 +173,45 @@ Do this change in all classes that implement ``__nonzero__``.
 
 Unbound Methods
 ~~~~~~~~~~~~~~~
+
+Python 2 had two kinds of methods: *bound* methods, which you could retreive
+from a class object, and *unbound* methods, which were retreived from
+an instance::
+
+    >>> class Hello(object):
+    ...     def say(self):
+    ...         print('hello world')
+    ...
+    >>> hello_instance = Hello()
+    >>> print(Hello.say)
+    <unbound method Hello.say>
+    >>> print(hello_instance.say)
+    <bound method Hello.say of <__main__.Hello object at 0x7f6f40afa790>>
+
+Bound methods inject ``self`` in each call to the method::
+
+    >>> hello_instance.say()
+    hello world
+
+Unbound methods *checked* if their first argument is an instance of the
+appropriate class::
+
+    >>> Hello.say(hello_instance)
+    hello world
+    >>> Hello.say(1)
+    TypeError: unbound method say() must be called with Hello instance as first argument (got int instance instead)
+
+In Python 3, the concept of unbound methods is gone.
+Instead, regular functions are used::
+
+    >>> class Hello(object):
+    ...     def say(self):
+    ...         print('hello world')
+    ...
+    >>> print(Hello.say)
+    <function Hello.say at 0x7fdc2803cd90>
+
+If your code relies on unbound methods type-checking the ``self`` argument,
+or on the fact that unbound methods had a different type than functions,
+you will need to modify your code.
+Unfortunately, there is no automated way to tell if that's the case.
