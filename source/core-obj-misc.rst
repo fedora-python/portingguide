@@ -81,6 +81,70 @@ relied on them.
 ``__getslice__``, ``__setslice__``, ``__delslice__``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* :ref:`Fixer <python-modernize>`: None
+* Prevalence: Rare
+
+The special methods ``__getslice__``, ``__setslice__`` and ``__delslice__``,
+which were deprecated since Python 2.0, are no longer used in Python 3.
+Item access was unified under ``__getitem__``, ``__setitem__`` and
+``__delitem__``.
+
+If your code uses them, convert them into equivalent ``__getitem__``,
+``__setitem__`` and ``__delitem__``, possibly adding the functionality
+to existing methods.
+
+Keep in mind that :class:`slice` objects have a ``step`` attribute
+in addition to ``start`` and ``stop``.
+If your class does not support all steps, remember to raise an error for
+the ones you don't support.
+
+For example, the equivalent of::
+
+    class Slicable(object):
+        def __init__(self):
+            self.contents = list(range(10))
+
+        def __getslice__(self, start, stop):
+            return self.contents[start:stop]
+
+        def __setslice__(self, start, stop, value):
+            self.contents[start:stop] = value
+
+        def __delslice__(self, start, stop):
+            del self.contents[start:stop]
+
+would be::
+
+    class Slicable(object):
+        def __init__(self):
+            self.contents = list(range(10))
+
+        def __getitem__(self, item):
+            if isinstance(item, slice):
+                print(slice.step)
+                if item.step not in (1, None):
+                    raise ValueError('only step=1 supported')
+                return self.contents[item.start:item.stop]
+            else:
+                raise TypeError('non-slice indexing not supported')
+
+        def __setitem__(self, item, value):
+            if isinstance(item, slice):
+                if item.step not in (1, None):
+                    raise ValueError('only step=1 supported')
+                self.contents[item.start:item.stop] = value
+            else:
+                raise TypeError('non-slice indexing not supported')
+
+        def __delitem__(self, item):
+            if isinstance(item, slice):
+                if item.step not in (1, None):
+                    raise ValueError('only step=1 supported')
+                del self.contents[item.start:item.stop]
+            else:
+                raise TypeError('non-slice indexing not supported')
+
+
 ``__bool__``
 ~~~~~~~~~~~~
 
