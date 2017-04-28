@@ -125,7 +125,7 @@ The following are the most important differences:
   dict are reflected in the view.
 * The items in a view are not accessible by indexing. If you need that you'll
   need to convert the view to a list (e.g. ``list(d.values())``).
-* Key and value views support set operations, such as intersection and union
+* Key and value views support set operations, such as intersection and union.
 
 The following common operations work the same between views and lists, as long
 as the underlying dict is not modified:
