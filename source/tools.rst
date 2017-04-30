@@ -8,8 +8,8 @@ Here is a survey of tools we recommend.
 
 .. _six:
 
-six
----
+Compatibility library: ``six``
+------------------------------
 
 When porting a large piece of software, it is desirable to support both
 Python 2 and Python 3 in the same codebase.
@@ -37,8 +37,8 @@ or outright copying relevant pieces of it into your code.
 
 .. _python-modernize:
 
-python-modernize
-----------------
+Automated fixer: ``python-modernize``
+-------------------------------------
 
 Some steps of the porting process are quite mechanical, and can be automated.
 These are best handled by the ``python-modernize`` tool – a code-to-code
@@ -77,8 +77,8 @@ This guide will provide the necessary background for each fixer as we
 go along.
 
 
-py3c
-----
+Compatibility headers and guide for C extensions: ``py3c``
+----------------------------------------------------------
 
 Some projects involve extension modules written in C/C++, or embed Python in
 a C/C++-based application.
@@ -102,8 +102,8 @@ For these, we have two pieces of advice:
   extensions: `py3c`_.
 
 
-pylint --py3k
--------------
+Automated checker: ``pylint --py3k``
+------------------------------------
 
 Pylint is a static code analyzer that can catch mistakes such as
 initialized variables, unused imports, and duplicated code.
