@@ -3,8 +3,8 @@ Other Changes
 
 XXX
 
-``buffer`` and ``memoryview``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Raw buffer protocol: ``buffer`` and ``memoryview``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Doctests
 ~~~~~~~~

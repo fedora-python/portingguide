@@ -7,8 +7,8 @@ These changes are detailed in this section.
 
 .. _print-function:
 
-``print()``
-~~~~~~~~~~~
+The ``print()`` function
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_print``
 * Prevalence: Very Common
@@ -39,8 +39,8 @@ The recommended fixer will add the future import and rewrite all uses
 of ``print``.
 
 
-``input()``
-~~~~~~~~~~~
+Safe ``input()``
+~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_input_six``
 * Prevalence: Uncommon
@@ -68,8 +68,8 @@ it produces is really necessary.
 
 .. _file-builtin:
 
-``file()``
-~~~~~~~~~~
+Removed ``file()``
+~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_file`` (but see below)
 * Prevalence: Rare
@@ -108,8 +108,8 @@ that includes :class:`io.IOBase` and, under Python 2, ``file``::
     isinstance(f, file_types)
 
 
-``apply()``
-~~~~~~~~~~~
+Removed ``apply()``
+~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_apply`` (but see below)
 * Prevalence: Common
@@ -133,8 +133,8 @@ If the variable ``apply`` names a different function
 in some of your modules, revert the fixer's changes in that module.
 
 
-``reduce()``
-~~~~~~~~~~~~
+Moved ``reduce()``
+~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_reduce``
 * Prevalence: Uncommon
@@ -153,8 +153,8 @@ The recommended fixer will add this import automatically.
 
 .. _exec:
 
-``exec()``
-~~~~~~~~~~
+The ``exec()`` function
+~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_exec``
 * Prevalence: Rare
@@ -180,8 +180,8 @@ The recommended fixer will convert all uses of ``exec`` to the function-like
 syntax.
 
 
-``execfile()``
-~~~~~~~~~~~~~~
+Removed ``execfile()``
+~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: None recommended
 * Prevalence: Very rare
@@ -210,8 +210,8 @@ using it, as it doesn't close the file correctly.
 .. XXX: file an issue in python-modernize
 
 
-``reload()``
-~~~~~~~~~~~~
+Moved ``reload()``
+~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Very rare
@@ -231,8 +231,8 @@ If your code uses ``reload()``, import it conditionally on Python 3::
 
 
 
-``intern()``
-~~~~~~~~~~~~
+Moved ``intern()``
+~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Very rare
@@ -248,8 +248,8 @@ If your code uses ``intern()``, import it conditionally on Python 3::
         from sys import intern
 
 
-``coerce()``
-~~~~~~~~~~~~
+Removed ``coerce()``
+~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare

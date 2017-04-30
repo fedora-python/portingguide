@@ -117,8 +117,8 @@ The recommended fixer will do this.
 
 .. _long-literals:
 
-``L`` suffix not allowed in numeric literals
-............................................
+The ``L`` suffix not allowed in numeric literals
+................................................
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_numliterals`` (but see below)
 * Prevalence: Very common
@@ -139,8 +139,8 @@ If the specific type is important, you will need to refactor the code so that
 it does not rely on the distinction, as discussed above.
 
 
-``L`` suffix dropped from the representation
-............................................
+The ``L`` suffix dropped from the representation
+................................................
 
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare

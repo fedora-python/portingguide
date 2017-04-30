@@ -10,8 +10,8 @@ functions with a call to :func:`py3:list`. However, in most cases it is better
 to apply a more specific fix.
 
 
-``map()`` and ``filter()``
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+New behavior of ``map()`` and ``filter()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixers <python-modernize>` (See caveat below):
 
@@ -126,8 +126,8 @@ are rebound to something else than the built-in functions.
 If your code does this, you'll need to do appropriate changes manually.
 
 
-``zip()``
-~~~~~~~~~
+New behavior of ``zip()``
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_zip`` (See caveat below)
 * Prevalence: Common
@@ -154,8 +154,8 @@ is rebound to something else than the built-in function.
 If your code does this, you'll need to do appropriate changes manually.
 
 
-``range()``
-~~~~~~~~~~~
+New behavior of ``range()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_xrange_six`` (See caveat below)
 * Prevalence: Common
@@ -198,8 +198,8 @@ function, the fixer will not work properly.
 In this case you'll need to do appropriate changes manually.
 
 
-``next()``
-~~~~~~~~~~
+New iteration protocol: ``next()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_next`` (See caveat below)
 * Prevalence: Common

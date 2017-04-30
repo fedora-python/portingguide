@@ -79,8 +79,8 @@ representation of an integer before, you'll need to change any code that
 relied on them.
 
 
-``__getslice__``, ``__setslice__``, ``__delslice__``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Old-style slicing: ``__getslice__``, ``__setslice__``, ``__delslice__``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
@@ -145,8 +145,8 @@ would be::
                 raise TypeError('non-slice indexing not supported')
 
 
-``__bool__``
-~~~~~~~~~~~~
+Customizing truthiness: ``__bool__``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Common
