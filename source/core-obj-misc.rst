@@ -152,7 +152,7 @@ would be::
 * Prevalence: Common
 
 Python 2 used the ``__nonzero__`` method to convert an object to boolean,
-i.e. to provide an implementation for :func:`bool`.
+i.e. to provide an implementation for :class:`bool() <bool>`.
 
 Other special methods that implement behavior for built-in functions
 are named after their respective functions.
