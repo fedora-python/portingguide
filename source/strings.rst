@@ -241,3 +241,60 @@ If your code does strict type checking, consult the notes on the
 The recommended fixer will add the ``from io import open`` import, but it
 will not add ``encoding`` arguments.
 We recommend adding them manually if the encoding is known.
+
+
+.. _testing-str:
+
+Testing Strings
+~~~~~~~~~~~~~~~
+
+When everything is ported and tests are passing, it is a good idea to make
+sure your code handles strings correctly – even in unusual situations.
+
+Many of the tests recommended below exercise behavior that
+“works” in Python 2 (does not raise an exception – but may produce subtly wrong
+results), while a Python 3 version will involve more thought and code.
+
+You might discover mistakes in how the Python 2 version processes strings.
+In these cases, it might be a good idea to enable new tests for Python 3 only:
+if some bugs in edge casessurvived so far, they can probably live until
+Python 2 is retired. Apply your own judgement.
+
+Things to test follow.
+
+
+Non-ASCII data
+..............
+
+Ensure that your software works (or, if appropriate, fails cleanly)
+with non-ASCII input, especially input from end-users.
+Example characters to check are:
+
+* ``é ñ ü Đ ř ů Å ß ç ı İ`` (from European personal names)
+* ``Ａ ﬄ ℚ ½`` (alternate forms and ligatures)
+* ``€ ₹ ¥`` (currency symbols)
+* ``Ж η 글 ओ କ じ 字`` (various scripts)
+* ``🐍 💖 ♒ ♘`` (symbols and emoji)
+
+
+Encodings and locales
+.....................
+
+If your software handles multiple text encodings, or handles user-specified
+encodings, make sure this capability is well-tested.
+
+Under Linux, run your software with the ``LC_ALL`` environment variable
+set to ``C`` and ``tr_TR.UTF-8``, and check handling of any command-line
+arguments and environment variables that may contain non-ASCII characters.
+
+
+Invalid input
+.............
+
+Test how the code handles invalid text input.
+If your software deals with files, try it a on non-UTF8 filename.
+
+Using Python 3, such a file can be created by::
+
+    with open(b'bad-\xFF-filename', 'wb') as file:
+        file.write(b'binary-\xFF-data')
