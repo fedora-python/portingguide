@@ -150,5 +150,5 @@ Python 3-compatible version.
 For less conservative projects, dropping Python 2 support will include
 removing compatibility workarounds.
 
-Targetting Python 3 only this will enable you start using all the new
+Targeting Python 3 only will enable you start using all the new
 features in the new major version – but those are for another guide.

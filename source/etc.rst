@@ -95,7 +95,7 @@ The exact mechanism had two major drawbacks:
 * Bytecode is not compatible across Python versions.
   If the same module was being imported by different versions of Python,
   each would overwrite the ``.pyc`` file with its own flavor of bytecode on
-  import. This would invalidating the cache for all other versions.
+  import. This would invalidate the cache for all other versions.
 * The ``.pyc`` cache could be used even without a corresponding ``.py`` file,
   which allowed some space saving (by distributing only the compiled file).
   However, if one deleted a ``.py`` file but forgot to also remove the ``.pyc``,

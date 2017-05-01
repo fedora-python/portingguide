@@ -257,7 +257,7 @@ results), while a Python 3 version will involve more thought and code.
 
 You might discover mistakes in how the Python 2 version processes strings.
 In these cases, it might be a good idea to enable new tests for Python 3 only:
-if some bugs in edge casessurvived so far, they can probably live until
+if some bugs in edge cases survived so far, they can probably live until
 Python 2 is retired. Apply your own judgement.
 
 Things to test follow.
