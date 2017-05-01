@@ -1,5 +1,5 @@
 The Porting Process
--------------------
+===================
 
 This chapter documents the entire process of porting a conservative project
 to Python 3.
@@ -7,7 +7,7 @@ We recommend that you read it before you embark on your first porting project.
 
 
 Make Sure your Dependencies are Ported
-......................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before you start porting, any libraries that your code imports need to run
 with Python 3.
@@ -35,7 +35,7 @@ for dropped packages.
 
 
 Run the Tests
-.............
+~~~~~~~~~~~~~
 
 It's impractical to make any changes to untested code, let alone porting
 the entire codebase to a new version of the programming language.
@@ -46,10 +46,10 @@ If not, write them – or you'll need to resort to testing manually.
 
 
 Drop Python 2.5 and Lower
-.........................
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Python 2.6 and 2.7 were released in lockstep with the early 3.x version,
-and contain several features that make supporting both versions
+Python 2.6 and 2.7 were released in lockstep with the early 3.x versions,
+and contain several features that make supporting both 2 and 3
 possible in the same codebase.
 
 Python 2.5 has been unmaintained for several years now, so any *new* code
@@ -59,6 +59,26 @@ Bring this up with the software's maintainers.
 If compatibility with Python 2.5 is *really* necessary, we recommend that
 you fork the codebase, i.e. work on a copy and regularly merge in any
 new development.
+
+
+Port the Code
+~~~~~~~~~~~~~
+
+Actual porting can be conceptually split into two phases:
+
+Modernization
+    Migrate away from deprecated features that have a Python3-compatible
+    equivalent available in Python 2.
+
+Porting
+    Add support for Python 3 while keeping compatibility with Python 2
+    by introducng specific workarounds and helpers.
+
+We don't recommend separating these phases. For larger projects,
+it it much better to separate the work by modules – port low-level
+code first, then move on to things that depends on what's already ported.
+
+We provide some general porting tips below:
 
 
 Use The Tools
@@ -88,19 +108,23 @@ own software, you can help developers with porting some open source software
 or your favorite library or application.
 
 
-Do One Change per Commit
-........................
+Use Separate Commits for Automated Changes
+..........................................
 
 For changes that are mechanical, and easily automated, we recommend that
 you do only one type of change per commit/patch.
 For example, one patch to change the :ref:`except syntax <except-syntax>`,
 then another for the :ref:`raise syntax <raise-syntax>`.
-Do not submit a single patch saying “Port to Python 3”.
-This makes the changes much easier to review.
+
+Even more importantly, do not combine large automated changes with manual
+fixups.
+It is much easier to review two patches: one done by a tool (which the
+reviewer can potentially re-run to verify the commit), and another that
+fixes up places where human care is nedeed.
 
 The descriptions of individual items in this guide are written so that you
-can use them in commit messages with minimal changes to explain why each change
-is necessary and to link to more information.
+can use them in commit messages to explain why each change is necessary
+and to link to more information.
 
 
 Follow the Rest of this Guide
@@ -116,4 +140,15 @@ tackled in a typical project.
 We recommend that you skim the introduction of each of the chapters,
 so that you know what you're up against before you start.
 
-Happy porting!
+
+Drop Python 2
+~~~~~~~~~~~~~
+
+The final step of the porting is dropping support for Python 2, which
+can happen after a long time – even several years from releasing a
+Python 3-compatible version.
+For less conservative projects, dropping Python 2 support will include
+removing compatibility workarounds.
+
+Targetting Python 3 only this will enable you start using all the new
+features in the new major version – but those are for another guide.
