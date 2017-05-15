@@ -72,7 +72,7 @@ Modernization
 
 Porting
     Add support for Python 3 while keeping compatibility with Python 2
-    by introducng specific workarounds and helpers.
+    by introducing specific workarounds and helpers.
 
 We don't recommend separating these phases. For larger projects,
 it it much better to separate the work by modules – port low-level
