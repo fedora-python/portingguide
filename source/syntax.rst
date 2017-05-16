@@ -127,7 +127,12 @@ Other Syntax Changes
 For convenience and completeness, this section lists syntax changes covered
 in other chapters:
 
+* :ref:`print-function`
+* :ref:`except-syntax`
+* :ref:`raise-syntax`
 * :ref:`import-star`
+* :ref:`long-literals`
 * :ref:`octal-literals`
+* :ref:`exec`
 
 .. todo:: complete list
