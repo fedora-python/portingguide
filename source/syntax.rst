@@ -8,6 +8,8 @@ little chance of breaking code, so they work well as the first patches
 to send to a project when intending to port it.
 
 
+.. index:: tabs and spaces
+
 Tabs and Spaces
 ~~~~~~~~~~~~~~~
 
@@ -31,6 +33,8 @@ You can use the following Bash command for this::
 
     find . -name '*.py' -type f -exec bash -c 'T=$(mktemp); expand -i -t 8 "$0" > "$T" && mv "$T" "$0"' {} \;
 
+
+.. index:: SyntaxError; tuple in argument list
 
 Tuple Unpacking in Parameter Lists
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,6 +74,8 @@ For each such ``lambda``, you should consider if replacing it with a regular
 named function would be an improvement.
 
 
+.. index:: backtick (`), grave operator (`), `; backtick operator
+
 Backticks
 ~~~~~~~~~
 
@@ -96,6 +102,9 @@ Re-defining built-in functions is usually considered bad style, but it never
 hurts to check if the code does it.
 
 
+.. index:: inequality, diamond operator (<>)
+.. index:: <>; inequality operator
+
 The Inequality Operator
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -107,6 +116,9 @@ little-known alternate spelling for inequality: the ``<>`` operator.
 
 The recommended fixer will replace all occurrences with ``!=``.
 
+
+.. index:: None, True, False
+.. index:: SyntaxError; None, SyntaxError; True, SyntaxError; False
 
 New Reserved Words
 ~~~~~~~~~~~~~~~~~~

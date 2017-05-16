@@ -6,6 +6,8 @@ to Python 3.
 We recommend that you read it before you embark on your first porting project.
 
 
+.. index:: dependencies
+
 Make Sure your Dependencies are Ported
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -34,6 +36,8 @@ for dropped packages.
 .. _portingdb: https://fedora.portingdb.xyz
 
 
+.. index:: tests
+
 Run the Tests
 ~~~~~~~~~~~~~
 
@@ -44,6 +48,8 @@ If the project has automatic tests, run them under Python 2 to make sure
 they pass.
 If not, write them – or you'll need to resort to testing manually.
 
+
+.. index:: Python 2.5
 
 Drop Python 2.5 and Lower
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,6 +66,8 @@ If compatibility with Python 2.5 is *really* necessary, we recommend that
 you fork the codebase, i.e. work on a copy and regularly merge in any
 new development.
 
+
+.. index:: porting process
 
 Port the Code
 ~~~~~~~~~~~~~
@@ -140,6 +148,8 @@ tackled in a typical project.
 We recommend that you skim the introduction of each of the chapters,
 so that you know what you're up against before you start.
 
+
+.. index:: dropping Python 2
 
 Drop Python 2
 ~~~~~~~~~~~~~

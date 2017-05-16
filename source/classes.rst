@@ -4,6 +4,11 @@ Classes
 Python 3 drops support for “old-style” classes, and introduces dedicated syntax
 for metaclasses. Read on for details.
 
+
+.. index:: object; as base class
+.. index:: old-style class
+.. index:: new-style class
+
 New-Style Classes
 ~~~~~~~~~~~~~~~~~
 
@@ -42,6 +47,9 @@ the codebase::
 However, you will need to test the result thoroughly.
 Old- and new-style classes have slightly differend semantics, described below.
 
+
+.. index:: MRO, method resolution order
+
 Method resolution
 -----------------
 
@@ -71,6 +79,8 @@ Other differences are in the object model: only new-style classes have
 attributes like ``__bases__``, ``__name__``, ``__class__`` is restricted or
 impossible.
 
+
+.. index:: metaclasses
 
 Metaclasses
 ~~~~~~~~~~~

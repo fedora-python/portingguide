@@ -8,6 +8,9 @@ type was merged into ``int``.
 This section describes these changes in detail, along with other, minor ones.
 
 
+.. index:: division
+.. index:: TypeError; division
+
 Division
 ~~~~~~~~
 
@@ -45,6 +48,8 @@ When adding the future import, check all divisions in the file and decide
 if the operator should be changed to ``//``.
 
 
+.. index:: __div__, __floordiv__, __truediv__
+
 Special Methods
 ...............
 
@@ -80,6 +85,8 @@ This can be done with a simple alias::
         __truediv__ = __div__
 
 
+.. index:: TypeError; int & long
+
 Unification of ``int`` and ``long``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -114,6 +121,8 @@ Once your code does not rely on the ``long``/``int`` distinction,
 you can replace all calls to ``long`` with ``int``.
 The recommended fixer will do this.
 
+
+.. index:: SyntaxError; L suffix on numbers
 
 .. _long-literals:
 
@@ -158,6 +167,7 @@ By extension, relying on the output of ``repr`` of long numbers is also fragile.
 Call ``str()`` instead of ``repr()`` when the result might be a (long) integer.
 
 
+.. index:: SyntaxError; octal literals
 
 .. _octal-literals:
 

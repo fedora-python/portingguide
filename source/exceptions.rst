@@ -18,6 +18,9 @@ This chapter mentions all exception-related changes needed to start
 supporting Python 3.
 
 
+.. index:: SyntaxError; except
+.. index:: except; new syntax
+
 .. _except-syntax:
 
 The new ``except`` syntax
@@ -45,6 +48,9 @@ You will need to switch to the new syntax.
 The recommended fixer works quite reliably, and it also fixes the
 :ref:`iter_exc` problem described below.
 
+
+.. index:: SyntaxError; raise
+.. index:: raise; new syntax
 
 .. _raise-syntax:
 
@@ -81,8 +87,8 @@ reliably, but do verify the resulting changes.
 
 
 .. _exc_scope:
-.. index::
-    single: NameError (from caught exception)
+.. index:: NameError; from caught exception
+.. index:: exception scope
 
 Caught Exception “Scope”
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -123,6 +129,9 @@ When you see this error, apply the recommended fix – assign a different name
 to the exception to use it outside the ``except`` clause.
 
 
+.. index:: iterating over exceptions
+.. index:: TypeError; iterating over exception
+
 .. _iter_exc:
 
 Iterating Exceptions
@@ -156,6 +165,9 @@ Inspect the output and break these into multiple lines manually.
 .. todo:: Report bug to python-modernize
 
 
+.. index:: raise; non-exceptions
+.. index:: TypeError; raise
+
 Raising Non-Exceptions
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -178,6 +190,9 @@ make it inherit from :py:class:`Exception`.
 Otherwise, switch to using a dedicated Exception class.
 
 
+.. index:: StandardError (removed exception)
+.. index:: NameError; StandardError
+
 The Removed ``StandardError``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -196,6 +211,11 @@ Some code might rely on the name of an exception class, or on exceptions not
 derived from ``StandardError``, or otherwise handle ``StandardError``
 specially. You'll need to handle these casses manually.
 
+
+.. index:: sys.exc_type, sys.exc_value, sys.exc_traceback
+.. index:: AttributeError; sys.exc_type
+.. index:: AttributeError; sys.exc_value
+.. index:: AttributeError; sys.exc_traceback
 
 Removed ``sys.exc_type``, ``sys.exc_value``, ``sys.exc_traceback``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -7,6 +7,11 @@ and key-based sorting, modern alternatives that have been available at least
 since Python 2.4.
 Details and porting strategies follow.
 
+
+.. index:: sort, comparison
+.. index:: TypeError; comparison
+.. index:: TypeError; sort
+
 Unorderable Types
 ~~~~~~~~~~~~~~~~~
 
@@ -33,6 +38,9 @@ If you need to sort heterogeneous lists, or compare different types of objects,
 implement a key function to fully describe how disparate types
 should be ordered.
 
+
+.. index:: __eq__, __ne__, __lt__, __le__, __gt__, __ge__
+.. index:: TypeError; __cmp__
 
 Rich Comparisons
 ~~~~~~~~~~~~~~~~
@@ -154,6 +162,9 @@ all methods can be given explicitly::
             return "%s %s" % (self.first, self.last)
 
 
+.. index:: cmp; removed built-in function
+.. index:: NameError; cmp
+
 The ``cmp`` Function
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -181,6 +192,9 @@ The expression used is not straightforward, so if you need the functionality,
 we recommend adding the full, documented function to your project's utility
 library.
 
+
+.. index:: cmp; argument of sort()
+.. index:: TypeError; key function
 
 The ``cmp`` Argument
 ~~~~~~~~~~~~~~~~~~~~

@@ -1,3 +1,7 @@
+
+
+.. index:: str, bytes, text, unicode
+
 Strings
 =======
 
@@ -42,6 +46,8 @@ We recommend replacing the word "string" in developer documentation
 (including docstrings and comments) with either “text”/“text string” or
 “bytes”/“byte string”, as appropriate.
 
+.. index:: native string
+
 The Native String
 -----------------
 
@@ -73,6 +79,8 @@ a third incompatible type makes porting process harder.
 Native strings are suitable mostly for conservative projects, where ensuring
 stability under Python 2 justifies extra porting effort.
 
+
+.. index:: encode, decode
 
 Conversion between text and bytes
 ---------------------------------
@@ -134,6 +142,8 @@ Depending on what you need, explicitly use a serialization function
 (e.g. :func:`pickle.dumps`), or convert to text and encode the text.
 
 
+.. index:: u (string prefix), b (string prefix)
+
 String Literals
 ---------------
 
@@ -145,6 +155,8 @@ Literals without these prefixes result in native strings.
 Add a ``b`` or ``u`` prefix to all strings, unless a native string
 is desired.
 
+
+.. index:: TypeError; mixing text and bytes
 
 String operations
 -----------------
@@ -191,6 +203,8 @@ The above code can be replaced by::
 The recommended fixer will import ``six`` and replace any uses of
 ``basestring`` by ``string_types``.
 
+
+.. index:: file I/O
 
 .. _str-file-io:
 
@@ -242,6 +256,8 @@ The recommended fixer will add the ``from io import open`` import, but it
 will not add ``encoding`` arguments.
 We recommend adding them manually if the encoding is known.
 
+
+.. index:: tests; text and bytes
 
 .. _testing-str:
 

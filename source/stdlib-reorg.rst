@@ -3,6 +3,10 @@ Standard Library Reorganization
 
 The standard library has been reorganized for Python 3.
 
+
+.. index:: renamed modules
+.. index:: ImportError; renamed modules
+
 Renamed Modules
 ~~~~~~~~~~~~~~~
 
@@ -29,6 +33,10 @@ The recommended fixer will automatically change imports to use ``six.moves``.
 
 .. todo:: copy list here, to fill the index
 
+
+.. index:: removed modules
+.. index:: ImportError; removed modules
+
 .. _six documentation: https://pythonhosted.org/six/#module-six.moves
 
 Removed modules
@@ -53,6 +61,9 @@ documentation of the specific module for recommended replacements.
 
 
 .. index:: urllib, urllib2, urlparse
+.. index:: ImportError; urllib
+.. index:: ImportError; urllib2
+.. index:: ImportError; urlparse
 
 The ``urllib`` modules
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -74,6 +85,9 @@ moves, so manual changes may be necessary.
 
 .. todo:: copy list here, to fill the index
 
+
+.. index:: string (module)
+.. index:: AttributeError; string module
 
 The ``string`` module
 ~~~~~~~~~~~~~~~~~~~~~

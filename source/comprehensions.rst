@@ -12,6 +12,9 @@ they behaved slightly differently than the other two.
 Python 3 removes the differences.
 
 
+.. index:: NameError; list comprehensions
+.. index:: list comprehensions; iteration variable
+
 Leaking of the Iteration Variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -65,6 +68,9 @@ Unfortunately, you will need to find and fix these cases manually.
 
 .. XXX: Detect this automatically!
 
+
+.. index:: SyntaxError; list comprehensions over tuples
+.. index:: list comprehensions; over tuples
 
 Comprehensions over Tuples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

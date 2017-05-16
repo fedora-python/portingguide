@@ -6,6 +6,9 @@ and to check for common errors.
 Here is a survey of tools we recommend.
 
 
+.. index::
+    single: six
+
 .. _six:
 
 Compatibility library: ``six``
@@ -34,6 +37,10 @@ one as hard as possible.
 If you do not use ``six``, you will most likely end up reimplementing it
 or outright copying relevant pieces of it into your code.
 
+
+.. index::
+    single: modernize
+    single: python-modernize
 
 .. _python-modernize:
 
@@ -77,6 +84,9 @@ This guide will provide the necessary background for each fixer as we
 go along.
 
 
+.. index::
+    single: py3c
+
 Compatibility headers and guide for C extensions: ``py3c``
 ----------------------------------------------------------
 
@@ -101,6 +111,9 @@ For these, we have two pieces of advice:
   similar to this one, which also comes with a ``six``-like library for C
   extensions: `py3c`_.
 
+
+.. index::
+    single: pylint --py3k
 
 Automated checker: ``pylint --py3k``
 ------------------------------------

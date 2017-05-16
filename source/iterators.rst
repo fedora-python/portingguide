@@ -10,6 +10,8 @@ functions with a call to :func:`py3:list`. However, in most cases it is better
 to apply a more specific fix.
 
 
+.. index:: map, filter
+
 New behavior of ``map()`` and ``filter()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -126,6 +128,8 @@ are rebound to something else than the built-in functions.
 If your code does this, you'll need to do appropriate changes manually.
 
 
+.. index:: zip
+
 New behavior of ``zip()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -153,6 +157,8 @@ The fixer does not work properly if the name ``zip``
 is rebound to something else than the built-in function.
 If your code does this, you'll need to do appropriate changes manually.
 
+
+.. index:: range
 
 New behavior of ``range()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -197,6 +203,8 @@ If the name ``range`` is rebound to something else than the built-in
 function, the fixer will not work properly.
 In this case you'll need to do appropriate changes manually.
 
+
+.. index:: next, __next__
 
 New iteration protocol: ``next()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

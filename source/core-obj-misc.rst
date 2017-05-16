@@ -5,6 +5,15 @@ This page details miscellaneous changes to core objects: functions and
 classes.
 
 
+.. index:: func_* attributes
+.. index:: AttributeError; func_closure
+.. index:: AttributeError; func_code
+.. index:: AttributeError; func_defaults
+.. index:: AttributeError; func_dict
+.. index:: AttributeError; func_doc
+.. index:: AttributeError; func_globals
+.. index:: AttributeError; func_name
+
 Function Attributes
 ~~~~~~~~~~~~~~~~~~~
 
@@ -40,6 +49,9 @@ a function object.
 If your code uses the ``func_*`` names for other purposes, you'll need to
 revert the fixer's changes.
 
+
+.. index:: __oct__, __hex__
+.. index:: TypeError; object cannot be interpreted as an integer
 
 ``__oct__``, ``__hex__``
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,6 +90,10 @@ If your ``__oct__`` or ``__hex__`` did not return an octal/hexadecimal
 representation of an integer before, you'll need to change any code that
 relied on them.
 
+
+
+.. index:: __getslice__, __setslice__, __delslice__
+.. index:: TypeError; object is not subscriptable
 
 Old-style slicing: ``__getslice__``, ``__setslice__``, ``__delslice__``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,6 +161,8 @@ would be::
                 raise TypeError('non-slice indexing not supported')
 
 
+.. index:: __bool__, __nonzero__
+
 Customizing truthiness: ``__bool__``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -170,6 +188,8 @@ and use an alias for the other name::
 
 Do this change in all classes that implement ``__nonzero__``.
 
+
+.. index:: bound method, unbound method
 
 Unbound Methods
 ~~~~~~~~~~~~~~~

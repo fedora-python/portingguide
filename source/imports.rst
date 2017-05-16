@@ -63,6 +63,9 @@ This may be too much churn for your project; in most cases it is enough to
 verify that your imports are not ambiguous.
 
 
+.. index:: SyntaxError; import *
+.. index:: import *, *; star import
+
 .. _import-star:
 
 ``import *`` in Functions
@@ -89,6 +92,10 @@ This code raised a :py:class:`SyntaxWarning` already in Python 2.6.
 In Python 3, this becomes a :py:class:`SyntaxError`, so module-level
 test coverage is enough to spot the error.
 
+
+.. index:: import cycles
+.. index:: ImportError; import cycles
+.. index:: NameError; import cycles
 
 Import Cycles
 ~~~~~~~~~~~~~

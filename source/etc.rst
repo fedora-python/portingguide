@@ -6,6 +6,9 @@ scope: low-level buffers, doctests, and bytecode cache files.
 
 
 
+.. index:: buffer, memoryview
+.. index:: NameError; buffer
+
 Raw buffer protocol: ``buffer`` and ``memoryview``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,6 +35,9 @@ knowledge about your particular interface.
 .. _corresponding C API: https://docs.python.org/2/c-api/objbuffer.html
 .. _Py_buffer: https://docs.python.org/3/c-api/buffer.html
 .. _Python documentation: https://docs.python.org/2/c-api/buffer.html
+
+
+.. index:: doctest
 
 Doctests
 ~~~~~~~~
@@ -81,6 +87,8 @@ examples are tested under only one of the supported Python versions.
 .. _Doctests: https://docs.python.org/3/library/doctest.html
 .. _pytest: https://docs.pytest.org
 
+
+.. index:: .pyc files, pyc files, bytecode cache
 
 Reorganization of ``.pyc`` files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -5,6 +5,9 @@ Python 3 saw some changes to built-in functions.
 These changes are detailed in this section.
 
 
+.. index:: print
+.. index:: SyntaxError; print
+
 .. _print-function:
 
 The ``print()`` function
@@ -39,6 +42,9 @@ The recommended fixer will add the future import and rewrite all uses
 of ``print``.
 
 
+.. index:: input
+.. index:: NameError; raw_input
+
 Safe ``input()``
 ~~~~~~~~~~~~~~~~
 
@@ -65,6 +71,9 @@ The recommended fixer will import that helper as ``input``, replace
 After running it, examine the output to determine if any :func:`eval`
 it produces is really necessary.
 
+
+.. index:: file
+.. index:: NameError; file
 
 .. _file-builtin:
 
@@ -108,6 +117,9 @@ that includes :class:`io.IOBase` and, under Python 2, ``file``::
     isinstance(f, file_types)
 
 
+.. index:: apply
+.. index:: NameError; apply
+
 Removed ``apply()``
 ~~~~~~~~~~~~~~~~~~~
 
@@ -133,6 +145,9 @@ If the variable ``apply`` names a different function
 in some of your modules, revert the fixer's changes in that module.
 
 
+.. index:: reduce
+.. index:: NameError; reduce
+
 Moved ``reduce()``
 ~~~~~~~~~~~~~~~~~~
 
@@ -150,6 +165,9 @@ by importing it for all versions of Python::
 
 The recommended fixer will add this import automatically.
 
+
+.. index:: exec
+.. index:: SyntaxError; exec
 
 .. _exec:
 
@@ -179,6 +197,9 @@ a 2- or 3-tuple. This means the function-like syntax works even in Python 2.
 The recommended fixer will convert all uses of ``exec`` to the function-like
 syntax.
 
+
+.. index:: execfile
+.. index:: NameError; execfile
 
 Removed ``execfile()``
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -210,6 +231,9 @@ using it, as it doesn't close the file correctly.
 .. XXX: file an issue in python-modernize
 
 
+.. index:: reload
+.. index:: NameError; reload
+
 Moved ``reload()``
 ~~~~~~~~~~~~~~~~~~
 
@@ -230,6 +254,8 @@ If your code uses ``reload()``, import it conditionally on Python 3::
         from importlib import reload
 
 
+.. index:: intern
+.. index:: NameError; intern
 
 Moved ``intern()``
 ~~~~~~~~~~~~~~~~~~
@@ -247,6 +273,9 @@ If your code uses ``intern()``, import it conditionally on Python 3::
     if not six.PY2:
         from sys import intern
 
+
+.. index:: coerce
+.. index:: NameError; coerce
 
 Removed ``coerce()``
 ~~~~~~~~~~~~~~~~~~~~

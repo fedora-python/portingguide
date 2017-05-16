@@ -3,6 +3,9 @@ Dictionaries
 
 There are three most significant changes related to dictionaries in Python 3.
 
+
+.. index:: AttributeError; has_key()
+
 Removed ``dict.has_key()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,6 +43,8 @@ If you are using objects with unrelated semantics for the attribute
 ``has_key``, you'll need to review the fixer's output and revert its changes
 for such objects.
 
+
+.. index:: dict; key order
 
 Changed Key Order
 ~~~~~~~~~~~~~~~~~
@@ -107,8 +112,10 @@ However, the issue can be detected by running the code under Python 2
 with ``PYTHONHASHSEED=random``.
 Do that, and investigate and fix any failures.
 
-
 .. _CVE-2012-1150: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-1150
+
+
+.. index:: dict; views
 
 Dict Views and Iterators
 ~~~~~~~~~~~~~~~~~~~~~~~~
