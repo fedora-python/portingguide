@@ -113,7 +113,7 @@ should be replaced with::
     products = ['widget', 'thingy', 'whatchamacallit']
     print(', '.join(products))
 
-The :ref:`python-modenize` tool doesn't provide an automated fixer for these
+The :ref:`python-modernize` tool doesn't provide an automated fixer for these
 changes.
 
 .. todo:: copy list here, to fill the index
