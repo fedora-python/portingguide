@@ -5,7 +5,7 @@ Python 3 drops support for “old-style” classes, and introduces dedicated syn
 for metaclasses. Read on for details.
 
 
-.. index:: object; as base class
+.. index:: object; object as base class
 .. index:: old-style class
 .. index:: new-style class
 
