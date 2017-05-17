@@ -39,7 +39,7 @@ implement a key function to fully describe how disparate types
 should be ordered.
 
 
-.. index:: __eq__, __ne__, __lt__, __le__, __gt__, __ge__
+.. index:: __eq__, __ne__, __lt__, __le__, __gt__, __ge__, __cmp__
 .. index:: TypeError; __cmp__
 
 Rich Comparisons

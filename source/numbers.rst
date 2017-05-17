@@ -85,6 +85,7 @@ This can be done with a simple alias::
         __truediv__ = __div__
 
 
+.. index:: int, long
 .. index:: TypeError; int & long
 
 Unification of ``int`` and ``long``

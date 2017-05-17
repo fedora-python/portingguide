@@ -4,6 +4,7 @@ Dictionaries
 There are three most significant changes related to dictionaries in Python 3.
 
 
+.. index:: has_key
 .. index:: AttributeError; has_key()
 
 Removed ``dict.has_key()``

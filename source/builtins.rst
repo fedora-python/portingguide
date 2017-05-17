@@ -42,7 +42,7 @@ The recommended fixer will add the future import and rewrite all uses
 of ``print``.
 
 
-.. index:: input
+.. index:: input, raw_input
 .. index:: NameError; raw_input
 
 Safe ``input()``
