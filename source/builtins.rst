@@ -213,10 +213,12 @@ The call::
 
     execfile(filename)
 
-was equivalent to::
+was roughly equivalent to::
+
+    from io import open
 
     def compile_file(filename):
-        with open(filename) as f:
+        with open(filename, encoding='utf-8') as f:
             return compile(f.read(), filename, 'exec')
 
     exec(compile_file(filename))
@@ -228,7 +230,20 @@ as above.
 Although :ref:`python-modernize` has an ``execfile`` fixer, we don't recommend
 using it, as it doesn't close the file correctly.
 
+Note that the above hard-codes the ``utf-8`` encoding (which also works if your
+code uses ASCII).
+If your code uses a different encoding, substitute that.
+If you don't know the encoding in advance, you will need to honor `PEP 263`_
+special comments: on Python 3 use the above with :func:`py3:tokenize.open`
+instead of :func:`py3:open`, and on Python 2 fall back to the old
+:func:`py2:execfile`.
+
+The `io.open()` function is discussed in this guide's
+:ref:`section on strings <str-file-io>`.
+
 .. XXX: file an issue in python-modernize
+
+.. _PEP 263: https://www.python.org/dev/peps/pep-0263/
 
 
 .. index:: reload
