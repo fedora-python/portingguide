@@ -10,7 +10,7 @@ Developer-visible changes are summarised below.
 Absolute imports
 ~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_import`` (See caveat below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_import`` (See caveat below)
 * Prevalence: Common
 * Future import: ``from __future__ import absolute_imports``
 * Specification: `PEP 328 <https://www.python.org/dev/peps/pep-0328/>`_
