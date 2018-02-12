@@ -174,7 +174,7 @@ The recommended fixer will add this import automatically.
 The ``exec()`` function
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_exec``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_exec``
 * Prevalence: Rare
 
 In Python 2, :func:`exec` was a statement. In Python 3, it is a function.
