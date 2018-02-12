@@ -1,0 +1,10 @@
+language: python
+
+python:
+  - "3.6"
+
+install: python -m pip install -r test-requirements.txt
+
+script: python -m pytest -v
+
+sudo: false
