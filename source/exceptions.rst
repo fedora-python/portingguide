@@ -137,7 +137,7 @@ to the exception to use it outside the ``except`` clause.
 Iterating Exceptions
 ~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_except`` (but see caveat below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_except`` (but see caveat below)
 * Prevalence: Rare
 
 In Python 2, exceptions were *iterable*, so it was possible to “unpack” the
@@ -196,7 +196,7 @@ Otherwise, switch to using a dedicated Exception class.
 The Removed ``StandardError``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_standarderror`` (but see caveat below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_standarderror`` (but see caveat below)
 * Prevalence: Rare
 
 The :class:`py2:StandardError` class is removed in Python 3.

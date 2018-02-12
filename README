@@ -3,3 +3,28 @@ The Conservative Python 3 Porting Guide
 
 A guide for people for whom Python 3 is a necessary nuisance, written for
 large, conservative codebases that need to start supporting Python 3.
+
+
+Building
+--------
+
+To build the documentation locally, use a Python 3 virtualenv,
+install sphinx:
+
+    $ python -m pip install sphinx
+
+... and run it:
+
+    $ make html
+
+
+Testing
+-------
+
+We have a few automatic tests. To run them, install dependencies:
+
+    $ python -m pip install -r test-requirements.txt
+
+... and run:
+
+    $ python -m pytest -v
