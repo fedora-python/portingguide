@@ -27,7 +27,7 @@ you should use::
 Note that the recommended fixer replaces all calls to *any* ``has_key`` method;
 it does not check that its object is actually a dictionary.
 
-If you use a third-party non-dict-like class, it should implement ``in``
+If you use a third-party dict-like class, it should implement ``in``
 already.
 If not, complain to its author: it should have been added as part of adding
 Python 3 support.
