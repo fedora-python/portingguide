@@ -33,7 +33,7 @@ unmaintained, start looking for a replacement.
 For projects in Fedora, the `portingdb`_ project lists known alternatives
 for dropped packages.
 
-.. _portingdb: https://fedora.portingdb.xyz
+.. _portingdb: http://fedora.portingdb.xyz
 
 
 .. index:: tests
