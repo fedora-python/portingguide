@@ -83,8 +83,8 @@ Porting
     by introducing specific workarounds and helpers.
 
 We don't recommend separating these phases. For larger projects,
-it it much better to separate the work by modules – port low-level
-code first, then move on to things that depends on what's already ported.
+it is much better to separate the work by modules – port low-level
+code first, then move on to things that depend on what's already ported.
 
 We provide some general porting tips below:
 
@@ -160,5 +160,5 @@ Python 3-compatible version.
 For less conservative projects, dropping Python 2 support will include
 removing compatibility workarounds.
 
-Targeting Python 3 only will enable you start using all the new
+Targeting Python 3 only will enable you to start using all the new
 features in the new major version – but those are for another guide.
