@@ -49,20 +49,20 @@ they pass.
 If not, write them – or you'll need to resort to testing manually.
 
 
-.. index:: Python 2.5
+.. index:: Python 2.6
 
-Drop Python 2.5 and Lower
+Drop Python 2.6 and Lower
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Python 2.6 and 2.7 were released in lockstep with the early 3.x versions,
-and contain several features that make supporting both 2 and 3
+Python 2.7 was released in lockstep with earlier 3.x versions,
+and contains several features that make supporting both 2 and 3
 possible in the same codebase.
 
-Python 2.5 has been unmaintained for several years now, so any *new* code
+Python 2.6 has been unmaintained for several years now, so any *new* code
 written for it does not have much of a future.
 Bring this up with the software's maintainers.
 
-If compatibility with Python 2.5 is *really* necessary, we recommend that
+If compatibility with Python 2.6 is *really* necessary, we recommend that
 you fork the codebase, i.e. work on a copy and regularly merge in any
 new development.
 
@@ -128,7 +128,7 @@ Even more importantly, do not combine large automated changes with manual
 fixups.
 It is much easier to review two patches: one done by a tool (which the
 reviewer can potentially re-run to verify the commit), and another that
-fixes up places where human care is nedeed.
+fixes up places where human care is needed.
 
 The descriptions of individual items in this guide are written so that you
 can use them in commit messages to explain why each change is necessary
@@ -155,7 +155,7 @@ Drop Python 2
 ~~~~~~~~~~~~~
 
 The final step of the porting is dropping support for Python 2, which
-can happen after a long time – even several years from releasing a
+can happen after a long time – even a few years from releasing a
 Python 3-compatible version.
 For less conservative projects, dropping Python 2 support will include
 removing compatibility workarounds.
