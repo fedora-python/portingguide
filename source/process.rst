@@ -128,7 +128,7 @@ Even more importantly, do not combine large automated changes with manual
 fixups.
 It is much easier to review two patches: one done by a tool (which the
 reviewer can potentially re-run to verify the commit), and another that
-fixes up places where human care is nedeed.
+fixes up places where human care is needed.
 
 The descriptions of individual items in this guide are written so that you
 can use them in commit messages to explain why each change is necessary
