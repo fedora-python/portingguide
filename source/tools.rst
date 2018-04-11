@@ -98,7 +98,7 @@ For these, we have two pieces of advice:
 *
 
   Even though this is a conservative guide, we encourage you to try porting
-  C extensions away from the Cython C API. For wrappers to external libraries
+  C extensions away from the Python C API. For wrappers to external libraries
   we recommend `CFFI`_; for code that needs to be fast there's `Cython`_.
 
   While this is relatively disruptive, the result will very likely be more
