@@ -204,7 +204,7 @@ The recommended fixer will import ``six`` and replace any uses of
 ``basestring`` by ``string_types``.
 
 
-.. index:: file I/O
+.. index:: file I/O, open
 
 .. _str-file-io:
 
