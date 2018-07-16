@@ -20,7 +20,10 @@ def fixer_names():
     # use subprocess -- modernize doesn't have public fixer list API
     proc = subprocess.run([sys.executable, '-m', 'modernize', '-l'],
                           stdout=subprocess.PIPE, encoding='ascii', check=True)
-    lines = proc.stdout.splitlines()
+
+    # In modernize 0.6.1, the output has changed to list additional information
+    # This takes the first part only and works with older modernize as well
+    lines = [l.strip().split()[0] for l in proc.stdout.splitlines() if l]
 
     # first line is a header, all others should be fixers
     assert not FIXER_RE.fullmatch(lines[0])
