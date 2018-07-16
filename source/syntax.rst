@@ -91,12 +91,12 @@ The recommended fixer does a good job, though it doesn't catch the case where
 the name ``repr`` is redefined, as in::
 
     repr = None
-    print(`1+_2`)
+    print(`1+2`)
 
 which becomes::
 
     repr = None
-    print(repr(1+_2))
+    print(repr(1+2))
 
 Re-defining built-in functions is usually considered bad style, but it never
 hurts to check if the code does it.
