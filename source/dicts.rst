@@ -101,8 +101,8 @@ In Python 3.3+, this setting is the default::
     [('c', 3), ('e', 5), ('d', 4), ('a', 1), ('b', 2)]
 
 Additionally, CPython 3.6+ uses a new implementation of dictionaries,
-which makes them appear sorted by insertion order (though you shouldn't rely
-on this behavior)::
+which makes them appear sorted by insertion order (though you can only rely
+on this behavior in Python 3.7+)::
 
     $ python3 order.py
     [('a', 1), ('b', 2), ('c', 3), ('d', 4), ('e', 5)]
