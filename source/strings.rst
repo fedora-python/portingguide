@@ -300,7 +300,7 @@ If your software handles multiple text encodings, or handles user-specified
 encodings, make sure this capability is well-tested.
 
 Under Linux, run your software with the ``LC_ALL`` environment variable
-set to ``C`` and ``tr_TR.UTF-8``, and check handling of any command-line
+set to ``C`` and ``tr_TR.utf8``, and check handling of any command-line
 arguments and environment variables that may contain non-ASCII characters.
 
 

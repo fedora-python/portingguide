@@ -27,7 +27,7 @@ In Python 2, dividing two integers resulted in an integer::
 
 This *truncating division* was inherited from C-based languages,
 but confused people who don't know those languages,
-such as those coming from Javascript or pure math.
+such as those coming from JavaScript or pure math.
 
 In Python 3, dividing two integers results in a float::
 
@@ -37,7 +37,7 @@ In Python 3, dividing two integers results in a float::
 The ``//`` operator, which was added all the way back in Python 2.2,
 always performs truncating division::
 
-    while_minutes = seconds // 60
+    whole_minutes = seconds // 60
 
 The ``from __future__ import division`` directive causes the ``/`` operator
 to behave the same in Python 2 as it does in Python 3.
