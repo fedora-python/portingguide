@@ -21,8 +21,8 @@ In Python 2, the ``str`` type was used for two different kinds of values –
 
     In code, we will refer to this type as ``unicode`` – a short, unambiguous
     name, although one that is not built-in in Python 3.
-    Some projects refer to it as ``six.text_type`` (from the :ref:`six`
-    library).
+    Some projects refer to it as ``six.text_type``
+    (from the :ref:`six library <six>`).
 
 *
 
@@ -134,8 +134,8 @@ Conversion to text
 ..................
 
 There is no built-in function that converts to text in both Python versions.
-The :ref:`six` library provides ``six.text_type``, which is fine if it appears
-once or twice in uncomplicated code.
+The :ref:`six library <six>` provides ``six.text_type``, which is fine if it
+appears once or twice in uncomplicated code.
 For better readability, we recommend using ``unicode``,
 which is unambiguous and clear, but it needs to be introduced with the
 following code at the beginning of a file::
@@ -202,7 +202,7 @@ In Python 3, the concept of ``basestring`` makes no sense: text is only
 represented by ``str``.
 
 For type-checking text strings in code compatible with both versions, the
-:ref:`six <six>` library offers ``string_types``, which is ``(basestring,)``
+:ref:`six library <six>` offers ``string_types``, which is ``(basestring,)``
 in Python 2 and ``(str,)`` in Python 3.
 The above code can be replaced by::
 
