@@ -67,15 +67,15 @@ strings.
 
 For other data, you can use the native string in these circumstances:
 
-    * You are working with textual data
-    * Under Python 2, each “native string” value has a single well-defined
-      encoding (such as ``UTF-8`` or :func:`py2:locale.getpreferredencoding`)
-    * You do not mix native strings with either bytes or text – always
-      encode/decode diligently when converting to these types.
+* You are working with textual data
+* Under Python 2, each “native string” value has a single well-defined
+  encoding (e.g. ``UTF-8`` or :func:`py2:locale.getpreferredencoding`)
+* You do not mix native strings with either bytes or text – always
+  encode/decode diligently when converting to these types.
 
 Native strings affect the semantics under Python 2 as little as possible,
 while not requiring the resulting Python 3 API to feel bad. But, having
-a third incompatible type makes porting process harder.
+a third incompatible type makes the porting process harder.
 Native strings are suitable mostly for conservative projects, where ensuring
 stability under Python 2 justifies extra porting effort.
 
@@ -123,6 +123,11 @@ Some common text encodings are:
   a string can only ever be pure ASCII.
 * ``locale.getpreferredencoding()``: The “preferred encoding” for
   command-line arguments, environment variables, and terminal input/output.
+
+If *you* are choosing an encoding to use – for example, your application
+*defines* a file format rather than using a format standardized externally –
+consider ``UTF-8``.
+And whatever your choice is, explicitly document it.
 
 
 Conversion to text
@@ -176,7 +181,7 @@ For example, these are all illegal::
 
     import re
     pattern = re.compile(b'a+')
-    pattern.patch('aaaaaa')
+    pattern.match('aaaaaa')
 
 
 Type checking
@@ -197,7 +202,7 @@ In Python 3, the concept of ``basestring`` makes no sense: text is only
 represented by ``str``.
 
 For type-checking text strings in code compatible with both versions, the
-:ref:`six` library offers ``string_types``, which is ``(basestring,)``
+:ref:`six <six>` library offers ``string_types``, which is ``(basestring,)``
 in Python 2 and ``(str,)`` in Python 3.
 The above code can be replaced by::
 
@@ -306,7 +311,7 @@ If your software handles multiple text encodings, or handles user-specified
 encodings, make sure this capability is well-tested.
 
 Under Linux, run your software with the ``LC_ALL`` environment variable
-set to ``C`` and ``tr_TR.utf8``, and check handling of any command-line
+set to ``C`` and to ``tr_TR.utf8``. Check handling of any command-line
 arguments and environment variables that may contain non-ASCII characters.
 
 
