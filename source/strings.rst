@@ -120,7 +120,7 @@ Some common encodings are:
 
 
 Conversion to text
-------------------
+..................
 
 There is no built-in function that converts to text in both Python versions.
 The :ref:`six` library provides ``six.text_type``, which is fine if it appears
@@ -134,7 +134,7 @@ following code at the beginning of a file::
 
 
 Conversion to bytes
--------------------
+...................
 
 There is no good function that converts an arbitrary object to bytes,
 as this operation does not make sense on arbitrary objects.
@@ -209,7 +209,7 @@ The recommended fixer will import ``six`` and replace any uses of
 .. _str-file-io:
 
 File I/O
-~~~~~~~~
+--------
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_open``
 * Prevalence: Common
@@ -262,7 +262,7 @@ We recommend adding them manually if the encoding is known.
 .. _testing-str:
 
 Testing Strings
-~~~~~~~~~~~~~~~
+---------------
 
 When everything is ported and tests are passing, it is a good idea to make
 sure your code handles strings correctly – even in unusual situations.
