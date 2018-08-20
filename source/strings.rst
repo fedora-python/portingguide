@@ -97,13 +97,19 @@ trying all alternatives.
 Unlike images, one bytestring can often be successfully decoded using more
 than one encoding.
 
-So, never assume an encoding without consulting relevant documentation
+
+Encodings
+.........
+
+Never assume a text encoding without consulting relevant documentation
 and/or researching a string's use cases.
 If an encoding for a particular use case is determined, document it.
-For example, a docstring can specify that some argument is “a bytestring
-holding UTF-8-encoded text data”.
+For example, a function docstring can specify that some argument is
+“a bytestring holding UTF-8-encoded text data”, or module documentation may
+clarify that „as per RFC 4514, LDAP attribute names are encoded to UTF-8
+for transmission“.
 
-Some common encodings are:
+Some common text encodings are:
 
 * ``UTF-8``: A widely used encoding that can encode any Unicode text,
   using one to four bytes per character.
