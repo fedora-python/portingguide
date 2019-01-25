@@ -105,12 +105,11 @@ aren't of the ``file`` type.
 If type-checking for files is necessary, we recommend using a tuple of types
 that includes :class:`io.IOBase` and, under Python 2, ``file``::
 
-    import six
     import io
 
-    if six.PY2:
+    try:
         file_types = file, io.IOBase
-    else:
+    except NameError:
         file_types = (io.IOBase,)
 
     ...
@@ -263,9 +262,9 @@ Python 2.6 and below didn't have an ``importlib`` module.
 
 If your code uses ``reload()``, import it conditionally on Python 3::
 
-    import six
-
-    if not six.PY2:
+    try:
+        reload
+    except NameError:
         from importlib import reload
 
 
@@ -283,9 +282,9 @@ In Python 3, it is moved to the ``sys`` module.
 
 If your code uses ``intern()``, import it conditionally on Python 3::
 
-    import six
-
-    if not six.PY2:
+    try:
+        intern
+    except NameError:
         from sys import intern
 
 
