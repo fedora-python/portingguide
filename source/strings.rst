@@ -140,7 +140,10 @@ For better readability, we recommend using ``unicode``,
 which is unambiguous and clear, but it needs to be introduced with the
 following code at the beginning of a file::
 
-    if not six.PY2:
+    try:
+        # Python 2: "unicode" is built-in
+        unicode
+    except NameError:
         unicode = str
 
 

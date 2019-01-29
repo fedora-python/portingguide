@@ -108,8 +108,10 @@ that includes :class:`io.IOBase` and, under Python 2, ``file``::
     import io
 
     try:
+        # Python 2: "file" is built-in
         file_types = file, io.IOBase
     except NameError:
+        # Python 3: "file" fully replased with IOBase
         file_types = (io.IOBase,)
 
     ...
@@ -260,9 +262,11 @@ In Python 3, it is moved to the ``importlib`` module.
 Python 2.7 included an ``importlib`` module, but without a ``reload`` function.
 Python 2.6 and below didn't have an ``importlib`` module.
 
-If your code uses ``reload()``, import it conditionally on Python 3::
+If your code uses ``reload()``, import it conditionally if it doesn't exist
+(using `feature detection`_)::
 
     try:
+        # Python 2: "reload" is built-in
         reload
     except NameError:
         from importlib import reload
@@ -280,9 +284,11 @@ Moved ``intern()``
 The :func:`~sys.intern` function was built-in in Python 2.
 In Python 3, it is moved to the ``sys`` module.
 
-If your code uses ``intern()``, import it conditionally on Python 3::
+If your code uses ``intern()``, import it conditionally if it doesn't exist
+(using `feature detection`_)::
 
     try:
+        # Python 2: "intern" is built-in
         intern
     except NameError:
         from sys import intern
@@ -306,3 +312,9 @@ If any of your classes defines the special method ``__coerce__``,
 remove that as well, and test that the removal did not break semantics.
 
 .. XXX: I've never seen serious use of ``coerce``, so the advice is limited.
+
+
+.. Common links
+   ------------
+
+.. _feature detection: https://docs.python.org/3/howto/pyporting.html#use-feature-detection-instead-of-version-detection
