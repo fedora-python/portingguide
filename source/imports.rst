@@ -12,7 +12,7 @@ Absolute imports
 
 * :ref:`Fixer <python-modernize>`: ``python-modernize -wnf libmodernize.fixes.fix_import`` (See caveat below)
 * Prevalence: Common
-* Future import: ``from __future__ import absolute_imports``
+* Future import: ``from __future__ import absolute_import``
 * Specification: `PEP 328 <https://www.python.org/dev/peps/pep-0328/>`_
 
 Under Python 2, when importing from inside a package, the package's own modules
@@ -43,7 +43,7 @@ Given the structure above, these statements would be equivalent
 Additionally, a *future import* was added to make all imports absolute
 (unless explicitly relative)::
 
-    from __future__ import absolute_imports
+    from __future__ import absolute_import
 
 Using this feature, ``from collections import deque`` will import from
 the standard library's ``collections`` module.
