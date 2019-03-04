@@ -4,14 +4,14 @@ import re
 import sys
 
 import pytest
-import modernize
 
 basepath = Path(__file__).parent.parent / 'source'
 all_rst_files = [str(p.relative_to(basepath))
                  for p in basepath.glob('**/*.rst')]
 
-# Fixer names are in the format "<module>.fixes.fix_<name>"
-FIXER_RE = re.compile(r'\w+\.fixes\.fix_\w+')
+# Fixer names are in the format "<module>.fixes.fix_<name>" but we test also
+# for typos like "<module>.fixes.ifx_<name>".
+FIXER_RE = re.compile(r'\w+\.fixes\.\w+')
 
 
 @pytest.fixture(scope='module')
