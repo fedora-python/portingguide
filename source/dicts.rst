@@ -10,7 +10,7 @@ There are three most significant changes related to dictionaries in Python 3.
 Removed ``dict.has_key()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.has_key`` (See caveat below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_has_key`` (See caveat below)
 * Prevalence: Common
 
 The ``dict.has_key()`` method, long deprecated in favor of the ``in`` operator,
