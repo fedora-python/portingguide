@@ -1,7 +1,7 @@
 Comprehensions
 --------------
 
-List comprehensions, a shrtcut for creating lists, have been in Python
+List comprehensions, a shortcut for creating lists, have been in Python
 since version 2.0.
 Python 2.4 added a similar feature – generator expressions;
 then 2.7 (and 3.0) introduced set and dict comprehensions.
