@@ -103,7 +103,7 @@ Import Cycles
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
-Python 3 introduced a reworked importmentation of ``import`` in the form
+Python 3 introduced a reworked implementation of ``import`` in the form
 of the :py:mod:`importlib` module.
 The new machinery is backwards-compatible in practice, except that some
 import cycles, especially those involving submodules, now raise
