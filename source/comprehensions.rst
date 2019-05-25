@@ -47,7 +47,7 @@ To fix this, either rewrite the code to not use the iteration variable after
 a list comprehension, or convert the comprehension to a ``for`` loop::
 
     powers = []
-    for i in for i in range(10):
+    for i in range(10):
         powers.append(2**i)
 
 In some cases, the change might silently cause different behavior.
