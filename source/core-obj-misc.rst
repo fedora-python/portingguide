@@ -194,8 +194,8 @@ Do this change in all classes that implement ``__nonzero__``.
 Unbound Methods
 ~~~~~~~~~~~~~~~
 
-Python 2 had two kinds of methods: *bound* methods, which you could retreive
-from a class object, and *unbound* methods, which were retreived from
+Python 2 had two kinds of methods: *unbound* methods, which you could retreive
+from a class object, and *bound* methods, which were retreived from
 an instance::
 
     >>> class Hello(object):
