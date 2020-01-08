@@ -14,7 +14,7 @@ In Python 2, the ``str`` type was used for two different kinds of values –
 
     **Text** contains human-readable messages, represented as a sequence of
     Unicode codepoints.
-    Usually, it does not contain unprintable control characters such as NULL.
+    Usually, it does not contain unprintable control characters such as ``\0``.
 
     This type is available as ``str`` in Python 3, and ``unicode``
     in Python 2.
@@ -58,19 +58,20 @@ can use what is conceptually a third type:
 
     The **native string** (``str``) – text in Python 3, bytes in Python 2
 
-Custom ``__str__`` and ``__repr__`` methods, and code that deals with
+Custom ``__str__`` and ``__repr__`` methods and code that deals with
 Python language objects (such as attribute/function names) will always need to
 use the native string, because that is what each version of Python uses
 for internal text-like data.
 Developer-oriented texts, such as exception messages, could also be native
 strings.
 
-For other data, you can use the native string in these circumstances:
+For other data, you should only use the native string if all of the following
+hold:
 
-* You are working with textual data
+* you are working with textual data,
 * Under Python 2, each “native string” value has a single well-defined
-  encoding (e.g. ``UTF-8`` or :func:`py2:locale.getpreferredencoding`)
-* You do not mix native strings with either bytes or text – always
+  encoding (e.g. ``UTF-8`` or :func:`py2:locale.getpreferredencoding`), and
+* you do not mix native strings with either bytes or text – always
   encode/decode diligently when converting to these types.
 
 Native strings affect the semantics under Python 2 as little as possible,
@@ -161,13 +162,56 @@ Depending on what you need, explicitly use a serialization function
 String Literals
 ---------------
 
+* :ref:`Fixer <python-modernize>`: None
+* Prevalence: Very common
+
 Quoted string literals can be prefixed with ``b`` or ``u`` to get bytes or
 text, respectively.
 These prefixes work both in Python 2 (2.6+) and 3 (3.3+).
 Literals without these prefixes result in native strings.
 
+In Python 3, the ``u`` prefix does nothing; it is only allowed for backwards
+compatibility.
+Likewise, the ``b`` prefix does nothing in Python 2.
+
 Add a ``b`` or ``u`` prefix to all strings, unless a native string
 is desired.
+Unfortunately, the choice between text and bytes cannot generally be automated.
+
+Raw Unicode strings
+...................
+
+* :ref:`Fixer <python-modernize>`: None
+* Prevalence: Rare
+
+In Python 2, the ``r`` prefix could be combined with ``u`` to avoid processing
+backslash escapes.
+However, this *did not* turn off processing Unicode escapes (``\u....`` or
+``\U........``), as the ``u`` prefix took precedence over ``r``::
+
+    >>> print u"\x23☺\u2744"    # Python 2 with Encoding: UTF-8
+    #☺❄
+    >>> print ur"\x23☺\u2744"   # Python 2 with Encoding: UTF-8
+    \x23☺❄
+
+This may be confusing at first.
+Keeping this would be even more confusing in Python 3, where the ``u`` prefix
+is a no-op backwards-compatible behavior.
+Python 3 avoids the choice between confusing or backwards-incompatible
+semantics by forbidding ``ru`` altogether.
+
+Avoid the ``ur`` prefixed in string literals.
+
+A general process is to:
+
+* change all non-ASCII characters to Unicode escapes,
+* use ``br`` instead of ``ur`` to get a byte string, and
+* decode Unicode escapes using the ``'raw_unicode_escape'`` codec::
+
+    >>> print(br"\x23\u263a\u2744".decode('raw_unicode_escape'))
+    \x23☺❄
+
+Usually, the literals are simpler so the change can be more straightforward.
 
 
 .. index:: TypeError; mixing text and bytes
@@ -185,6 +229,8 @@ For example, these are all illegal::
     import re
     pattern = re.compile(b'a+')
     pattern.match('aaaaaa')
+
+Encode or decode the data to make the types match.
 
 
 Type checking
