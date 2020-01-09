@@ -202,16 +202,11 @@ semantics by forbidding ``ur`` altogether.
 
 Avoid the ``ur`` prefix in string literals.
 
-A general process is to:
+The most straightforward way to do this is to use plain ``u`` literals
+with ``\\`` for a literal backslash::
 
-* change all non-ASCII characters to Unicode escapes,
-* use ``br`` instead of ``ur`` to get a byte string, and
-* decode Unicode escapes using the ``'raw_unicode_escape'`` codec::
-
-    >>> print(br"\x23\u263a\u2744".decode('raw_unicode_escape'))
-    \x23☺❄
-
-Usually, the literals are simpler so the change can be more straightforward.
+       >>> print(u"\\x23\u263a\u2744")
+       \x23☺❄
 
 
 .. index:: TypeError; mixing text and bytes
