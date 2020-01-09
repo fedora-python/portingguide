@@ -198,9 +198,9 @@ This may be confusing at first.
 Keeping this would be even more confusing in Python 3, where the ``u`` prefix
 is a no-op backwards-compatible behavior.
 Python 3 avoids the choice between confusing or backwards-incompatible
-semantics by forbidding ``ru`` altogether.
+semantics by forbidding ``ur`` altogether.
 
-Avoid the ``ur`` prefixed in string literals.
+Avoid the ``ur`` prefix in string literals.
 
 A general process is to:
 
