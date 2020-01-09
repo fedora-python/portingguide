@@ -196,7 +196,7 @@ However, this *did not* turn off processing Unicode escapes (``\u....`` or
 
 This may be confusing at first.
 Keeping this would be even more confusing in Python 3, where the ``u`` prefix
-is a no-op backwards-compatible behavior.
+is a no-op with backwards-compatible behavior.
 Python 3 avoids the choice between confusing or backwards-incompatible
 semantics by forbidding ``ur`` altogether.
 
