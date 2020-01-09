@@ -205,7 +205,7 @@ Avoid the ``ur`` prefix in string literals.
 The most straightforward way to do this is to use plain ``u`` literals
 with ``\\`` for a literal backslash::
 
-       >>> print(u"\\x23\u263a\u2744")
+       >>> print(u"\\x23☺\u2744")
        \x23☺❄
 
 
