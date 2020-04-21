@@ -111,7 +111,7 @@ that includes :class:`io.IOBase` and, under Python 2, ``file``::
         # Python 2: "file" is built-in
         file_types = file, io.IOBase
     except NameError:
-        # Python 3: "file" fully replased with IOBase
+        # Python 3: "file" fully replaced with IOBase
         file_types = (io.IOBase,)
 
     ...
