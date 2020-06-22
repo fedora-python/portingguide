@@ -28,3 +28,19 @@ We have a few automatic tests. To run them, install dependencies:
 ... and run:
 
     $ python -m pytest -v
+
+
+Licence
+-------
+
+This guide is released under the [CC BY-SA 4.0] licence.
+
+Additionally, all code in this repository (including code samples in the text,
+tests, build scripts) is dedicated to the public domain under the
+[CC0 1.0] dedication.
+
+[CC BY-SA 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
+[CC0 1.0]: https://creativecommons.org/publicdomain/zero/1.0/
+
+See the files `LICENCE.CC-BY-SA` and `LICENCE.CC0`, respectively, for the
+license text.
