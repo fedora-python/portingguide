@@ -29,7 +29,7 @@ it does not check that its object is actually a dictionary.
 
 If you use a third-party dict-like class, it should implement ``in``
 already.
-If not, complain to its author: it should have been added as part of adding
+If not, notify its author: it should have been added as part of adding
 Python 3 support.
 
 If your own codebase contains a custom dict-like class, add
