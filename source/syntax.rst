@@ -126,12 +126,73 @@ New Reserved Words
 * :ref:`Fixer <python-modernize>`: None
 * Prevalence: Rare
 
+Constants
+.........
+
 In Python 3, ``None``, ``True`` and ``False`` are syntactically keywords,
 not variable names, and cannot be assigned to.
 This was partially the case with ``None`` even in Python 2.6.
 
 Hopefully, production code does not assign to ``True`` or ``False``.
 If yours does, figure a way to do it differently.
+
+``async`` and ``await``
+.......................
+
+Since Python 3.7, ``async`` and ``await`` are also keywords.
+
+If your code uses these names, rename it.
+If other code depends on the names, keep the old name available for
+old Python versions.
+The way to do this will be different in each case, but generally
+you'll need to take advantage of the fact that in Python's various namespaces
+the strings ``'async'`` and ``'await'`` are still valid keys, even if they
+are not accesible usual with the syntax.
+
+For module-level functions, classes and constants, also assign the original
+name using :py:func:`globals()`.
+For example, a function previously named ``async`` could look like this::
+
+    def asynchronous():
+        """...
+
+        This function used to be called `async`.
+        It is still available under old name.
+        """
+
+    globals()['async'] = asynchronous
+
+For methods, and class-level constants, assign the original name using
+``setattr``::
+
+    class MyClass:
+        def asynchronous(self):
+            """...
+
+            This method used to be called `async`.
+            It is still available under old name.
+            """
+
+    setattr(MyClass, 'async', MyClass.asynchronous)
+
+For function parameters, more work is required. The result will depend on
+whether the argument is optional and whether ``None`` is a valid value for it.
+Here is a general starting point::
+
+    def process_something(asynchronous=None, **kwargs):
+        if asynchronous is None:
+            asynchronous = kwargs.get('async', None)
+        else:
+            if 'async' in kwargs:
+                raise TypeError('Both `asynchronous` and `async` specified')
+        if asynchronous is None:
+            raise TypeError('The argument `asynchronous` is required')
+
+For function arguments, if the parameter cannot be renamed as above,
+use “double star” syntax that allows you to pass arbitrary argument names::
+
+    process_something(**{'async': True})
+
 
 Other Syntax Changes
 ~~~~~~~~~~~~~~~~~~~~
