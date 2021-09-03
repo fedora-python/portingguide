@@ -255,3 +255,31 @@ fixer's output and revert the changes for objects of this class.
 
 The fixer will not add a ``__next__`` method to your classes.
 You will need to do this manually.
+
+Generators cannot raise ``StopIteration``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* :ref:`Fixer <python-modernize>`: None
+* Prevalence: Rare
+
+Since Python 3.7, generators cannot raise ``StopIteration`` directly,
+but must stop with ``return`` (or at the end of the function).
+This change was done to prevent subtle errors when a ``StopIteration``
+exception “leaks” between unrelated generators.
+
+For example, the following generator is considered a programming error,
+and in Python 3.7+ it raises ``RuntimeError``::
+
+    def count_to(maximum):
+        i = 0
+        while True:
+            yield i
+            i += 1
+            if i >= maximum:
+                raise StopIteration()
+
+Convert the ``raise StopIteration()`` to ``return``.
+
+If your code uses a helper function that can raise ``StopIteration`` to
+end the generator that calls it, you will need to move the returning logic
+to the generator itself.
