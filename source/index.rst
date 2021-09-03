@@ -49,6 +49,7 @@ Still with us? Let's dive in!
    classes
    comprehensions
    core-obj-misc
+   invoking-python
    etc
 
 
