@@ -124,7 +124,7 @@ that includes :class:`io.IOBase` and, under Python 2, ``file``::
 Removed ``apply()``
 ~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_apply`` (but see below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_apply`` (but see below)
 * Prevalence: Common
 
 In Python 2, the function :func:`apply` was built in.
@@ -152,7 +152,7 @@ in some of your modules, revert the fixer's changes in that module.
 Moved ``reduce()``
 ~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_reduce``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_reduce``
 * Prevalence: Uncommon
 
 In Python 2, the function :func:`reduce` was built in.
@@ -175,7 +175,7 @@ The recommended fixer will add this import automatically.
 The ``exec()`` function
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_exec``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_exec``
 * Prevalence: Rare
 
 In Python 2, :func:`exec` was a statement. In Python 3, it is a function.

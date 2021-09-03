@@ -39,7 +39,7 @@ You can use the following Bash command for this::
 Tuple Unpacking in Parameter Lists
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_tuple_params`` (fixup needed)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_tuple_params`` (fixup needed)
 * Prevalence: Common
 
 Python 3 requires that each argument of a ``def`` function has a name.
@@ -79,7 +79,7 @@ named function would be an improvement.
 Backticks
 ~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_repr`` (with caveat)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_repr`` (with caveat)
 * Prevalence: Common
 
 The backtick (`````) operator was removed in Python 3.
@@ -108,7 +108,7 @@ hurts to check if the code does it.
 The Inequality Operator
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_ne``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_ne``
 * Prevalence: Rare
 
 In the spirit of “There's only one way to do it”, Python 3 removes the

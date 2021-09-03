@@ -52,10 +52,15 @@ These are best handled by the ``python-modernize`` tool – a code-to-code
 translator that takes a Python 2 codebase and updates it to be compatible
 with both Python 2 and 3.
 
-The tool builds on top of ``2to3``, a library that comes with Python. ``2to3``
-was once intended as the main porting tool. It turned out inadequate for that
-task, but ``python-modernize`` (among others) successfully reuses its general
-infrastructure.
+.. note::
+
+    ``python-modernize`` was built on top of ``2to3`` from of Python's
+    standard library.  ``2to3`` was once intended as the main porting tool.
+    It turned out inadequate for that task, but ``python-modernize``
+    (among others) successfully reuses its general infrastructure.
+    Because ``2to3`` itself is built into Python and thus missing improvements
+    newer than the the Python that runs it, ``python-modernize`` now uses a
+    fork of ``2to3`` called ``fissix``.
 
 Assuming code is in version control, you'll generally want to run
 ``python-modernize`` with the ``-wn`` flags: ``-w`` flag causes the tool to

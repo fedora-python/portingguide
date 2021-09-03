@@ -100,7 +100,7 @@ This change has several consequences.
 Removal of the ``long`` type
 ............................
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_long``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_long``
 * Prevalence: Common
 
 The ``long`` builtin no longer exists.
@@ -130,7 +130,7 @@ The recommended fixer will do this.
 The ``L`` suffix not allowed in numeric literals
 ................................................
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_numliterals`` (but see below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_numliterals`` (but see below)
 * Prevalence: Very common
 
 In Python 2, ``12345L`` designated a ``long`` literal.
@@ -175,7 +175,7 @@ Call ``str()`` instead of ``repr()`` when the result might be a (long) integer.
 Octal Literals
 ~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_numliterals`` (but see below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_numliterals`` (but see below)
 * Prevalence: Uncommon
 
 Python 2's other holdover from C-based languages is the syntax of octal

@@ -17,7 +17,7 @@ classes.
 Function Attributes
 ~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_funcattrs`` (but see below)
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_funcattrs`` (but see below)
 * Prevalence: Rare
 
 In Python, functions are mutable objects that support custom attributes.

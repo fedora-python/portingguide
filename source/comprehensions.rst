@@ -75,7 +75,7 @@ Unfortunately, you will need to find and fix these cases manually.
 Comprehensions over Tuples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf lib2to3.fixes.fix_paren``
+* :ref:`Fixer <python-modernize>`: ``python-modernize -wnf fissix.fixes.fix_paren``
 * Prevalence: Rare
 
 Python 2 allowed list comprehensions over bare, non-parenthesized tuples:
