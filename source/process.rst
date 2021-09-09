@@ -148,6 +148,17 @@ tackled in a typical project.
 We recommend that you skim the introduction of each of the chapters,
 so that you know what you're up against before you start.
 
+Note that while the guide is fairly comprehensive, there are changes it does
+not cover.
+Be prepared to find a few issues specific to your code base that you'll need
+to figure out independently.
+
+Also note that the guide was written for Python 3.6.
+It includes several updates for newer versions, but we recommend skimming
+[What's New lists](https://docs.python.org/3/whatsnew/index.html)
+in the Python documentation to familiarize yourself with
+the changes in newer versions of Python.
+
 
 .. index:: dropping Python 2
 
